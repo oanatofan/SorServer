@@ -5,7 +5,7 @@ import java.util.Objects;
 public class LoginResponse {
 	private String userId = null;
 	private String userType = null;
-	private Boolean logedIn = null;
+	private Boolean logedIn = false;
 
 	public String getUserId() {
 		return userId;

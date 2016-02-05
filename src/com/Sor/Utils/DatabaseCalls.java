@@ -142,7 +142,7 @@ public class DatabaseCalls {
 			{	
 				RegisterResponse response=new RegisterResponse();
 				response.setLogedin(true);
-				response.setUserId(result);
+				response.setUserId(Integer.parseInt(result));
 				response.setUserType(userType);
 				return response;
 			}

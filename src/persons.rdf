@@ -1,0 +1,368 @@
+<rdf:RDF
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      xmlns:cv="http://captsolo.net/semweb/resume/0.2/cv.rdf/"
+      xmlns:cvb="http://captsolo.net/semweb/resume/0.2/base.rdf/"
+      xmlns:acc="http://www.semanticdesktop.org/ontologies/2011/10/05/dao/v1.0/"	
+
+<foaf:Person rdf:ID="1">
+<foaf:name>Ionut Vasiliu</foaf:name>
+<foaf:title>Mr</foaf:title>
+<foaf:givenname>Ionut</foaf:givenname>
+<foaf:family_name>Vasiliu</foaf:family_name>
+
+<foaf:age>25</foaf:age>
+<foaf:mbox rdf:resource="mailto:ionutz@yahoo.com"/>
+<foaf:homepage rdf:resource="www.ionutz.com"/>
+<foaf:phone rdf:resource="tel:0722333444"/>
+
+<foaf:Organization rdf:resource="Endava"/>
+<foaf:workplaceHomepage rdf:resource="www.endava.ro"/>
+<foaf:workInfoHomepage rdf:resource="www.programator.ro"/>
+<foaf:schoolHomepage rdf:resource="www.fii.ro"/>
+<foaf:topic_interest rdf:resource="java"/>
+
+<foaf:knows>
+<foaf:Person>
+<foaf:name>George Dinu</foaf:name>
+</foaf:Person>
+</foaf:knows>
+
+<cv:noOfChildren>0</cv:noOfChildren>
+<cv:maritalStatus>Single</cv:maritalStatus>
+<cv:hasNationality>romanian</cv:hasNationality>
+<cv:hasDriversLicense rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</cv:hasDriversLicense>
+<cv:hasCitizenship>Romania</cv:hasCitizenship>
+<cv:gender>Male</cv:gender>
+<cv:birthPlace>Romania</cv:birthPlace>
+
+<cv:EducationalOrg>fii iasi</cv:EducationalOrg>
+
+<cv:isCurrent rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cv:isCurrent>
+<cv:jobType>Employee</cv:jobType>
+<cv:jobDescription>Software development</cv:jobDescription>
+<cv:jobTitle>Java Developer</cv:jobTitle>
+<cv:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">-</cv:endDate>
+<cv:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">01/09/2009</cv:startDate>
+<cv:employedIn rdf:resource="Endava"/>
+<cv:careerLevel rdf:resource="Junior"/>
+
+<cv:skillLastUsed rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2012-02-23</cv:skillLastUsed>
+<cv:skillLevel>1</cv:skillLevel>
+<cv:skillYearsExperience rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</cv:skillYearsExperience>
+<cv:skillName>Java</cv:skillName>
+
+
+<cv:targetJobDescription>Developer</cv:targetJobDescription>
+<cv:targetSalary>5000</cv:targetSalary>
+<cv:targetSalaryCurrency>lei</cv:targetSalaryCurrency>
+
+<acc:userId>test</acc:userId>
+<acc:password>test</acc:password>
+
+
+</foaf:Person>
+
+
+
+<foaf:Person rdf:ID="2">
+<foaf:name>George Dinu</foaf:name>
+<foaf:title>Mr</foaf:title>
+<foaf:givenname>George</foaf:givenname>
+<foaf:family_name>Dinu</foaf:family_name>
+
+<foaf:age>32</foaf:age>
+<foaf:mbox rdf:resource="mailto:gd@yahoo.com"/>
+<foaf:homepage rdf:resource="www.dinu.com"/>
+<foaf:phone rdf:resource="tel:0722111222"/>
+
+<foaf:Organization rdf:resource="Capgemini"/>
+<foaf:workplaceHomepage rdf:resource="www.capgemini.ro"/>
+<foaf:workInfoHomepage rdf:resource="www.helpdesk.ro"/>
+<foaf:schoolHomepage rdf:resource="www.uaic.ro"/>
+<foaf:topic_interest rdf:resource="windows"/>
+
+<foaf:knows>
+<foaf:Person>
+<foaf:name>Ana Popa</foaf:name>
+</foaf:Person>
+</foaf:knows>
+
+<cv:noOfChildren>1</cv:noOfChildren>
+<cv:maritalStatus>Married</cv:maritalStatus>
+<cv:hasNationality>romanian</cv:hasNationality>
+<cv:hasDriversLicense rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cv:hasDriversLicense>
+<cv:hasCitizenship>Romania</cv:hasCitizenship>
+<cv:gender>Male</cv:gender>
+<cv:birthPlace>Iasi</cv:birthPlace>
+
+<cv:EducationalOrg>fii iasi</cv:EducationalOrg>
+
+<cv:isCurrent rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cv:isCurrent>
+<cv:jobType>Employee</cv:jobType>
+<cv:jobDescription>Helpdesk</cv:jobDescription>
+<cv:jobTitle>Support egineer</cv:jobTitle>
+<cv:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">-</cv:endDate>
+<cv:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">01/09/2010</cv:startDate>
+<cv:employedIn rdf:resource="Capgemini"/>
+<cv:careerLevel rdf:resource="Middle"/>
+
+<cv:skillLastUsed rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2011-02-23</cv:skillLastUsed>
+<cv:skillLevel>3</cv:skillLevel>
+<cv:skillYearsExperience rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</cv:skillYearsExperience>
+<cv:skillName>support</cv:skillName>
+
+
+<cv:targetJobDescription>Manager</cv:targetJobDescription>
+<cv:targetSalary>7000</cv:targetSalary>
+<cv:targetSalaryCurrency>lei</cv:targetSalaryCurrency>
+
+<acc:userId>test</acc:userId>
+<acc:password>test</acc:password>
+
+</foaf:Person>
+
+
+
+
+<foaf:Person rdf:ID="3">
+<foaf:name>Ana Popa</foaf:name>
+<foaf:title>Ms</foaf:title>
+<foaf:givenname>Ana</foaf:givenname>
+<foaf:family_name>Popa</foaf:family_name>
+
+<foaf:age>21</foaf:age>
+<foaf:mbox rdf:resource="mailto:ap@yahoo.com"/>
+<foaf:homepage rdf:resource="www.anapopa.com"/>
+<foaf:phone rdf:resource="tel:0722212121"/>
+
+<foaf:Organization rdf:resource="MobileApps"/>
+<foaf:workplaceHomepage rdf:resource="www.mobileapps.ro"/>
+<foaf:workInfoHomepage rdf:resource="www.qos.ro"/>
+<foaf:schoolHomepage rdf:resource="www.fii.ro"/>
+<foaf:topic_interest rdf:resource="testing"/>
+
+<foaf:knows>
+<foaf:Person>
+<foaf:name>Alexandru Radu</foaf:name>
+</foaf:Person>
+</foaf:knows>
+
+
+<cv:noOfChildren>0</cv:noOfChildren>
+<cv:maritalStatus>Single</cv:maritalStatus>
+<cv:hasNationality>romanian</cv:hasNationality>
+<cv:hasDriversLicense rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cv:hasDriversLicense>
+<cv:hasCitizenship>Romania</cv:hasCitizenship>
+<cv:gender>Female</cv:gender>
+<cv:birthPlace>Bucuresti</cv:birthPlace>
+
+<cv:EducationalOrg>univ buc</cv:EducationalOrg>
+
+<cv:isCurrent rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cv:isCurrent>
+<cv:jobType>Employee</cv:jobType>
+<cv:jobDescription>Tester</cv:jobDescription>
+<cv:jobTitle>Quality egineer</cv:jobTitle>
+<cv:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">-</cv:endDate>
+<cv:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">01/09/2010</cv:startDate>
+<cv:employedIn rdf:resource="MobileApps"/>
+<cv:careerLevel rdf:resource="Junior"/>
+
+<cv:skillLastUsed rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2014-02-23</cv:skillLastUsed>
+<cv:skillLevel>1</cv:skillLevel>
+<cv:skillYearsExperience rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</cv:skillYearsExperience>
+<cv:skillName>testing</cv:skillName>
+
+
+<cv:targetJobDescription>developer</cv:targetJobDescription>
+<cv:targetSalary>3500</cv:targetSalary>
+<cv:targetSalaryCurrency>lei</cv:targetSalaryCurrency>
+
+<acc:userId>test</acc:userId>
+<acc:password>test</acc:password>
+
+</foaf:Person>
+
+
+
+<foaf:Person rdf:ID="4">
+<foaf:name>Alexandru Radu</foaf:name>
+<foaf:title>Mr</foaf:title>
+<foaf:givenname>Alexandru</foaf:givenname>
+<foaf:family_name>Rad</foaf:family_name>
+
+<foaf:age>45</foaf:age>
+<foaf:mbox rdf:resource="mailto:ar@yahoo.com"/>
+<foaf:homepage rdf:resource="www.ar.com"/>
+<foaf:phone rdf:resource="tel:0745444555"/>
+
+<foaf:Organization rdf:resource="Cloud"/>
+<foaf:workplaceHomepage rdf:resource="www.cloud.ro"/>
+<foaf:workInfoHomepage rdf:resource="www.database.ro"/>
+<foaf:schoolHomepage rdf:resource="www.ghasachi.ro"/>
+<foaf:topic_interest rdf:resource="admin"/>
+
+<foaf:knows>
+<foaf:Person>
+<foaf:name>Andrei Moisa</foaf:name>
+</foaf:Person>
+</foaf:knows>
+
+<foaf:knows>
+<foaf:Person>
+<foaf:name>Ioana Marin</foaf:name>
+</foaf:Person>
+</foaf:knows>
+
+<cv:noOfChildren>2</cv:noOfChildren>
+<cv:maritalStatus>Married</cv:maritalStatus>
+<cv:hasNationality>romanian</cv:hasNationality>
+<cv:hasDriversLicense rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cv:hasDriversLicense>
+<cv:hasCitizenship>Romania</cv:hasCitizenship>
+<cv:gender>Male</cv:gender>
+<cv:birthPlace>Cluj</cv:birthPlace>
+
+<cv:EducationalOrg>univ cluj</cv:EducationalOrg>
+
+<cv:isCurrent rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cv:isCurrent>
+<cv:jobType>Employee</cv:jobType>
+<cv:jobDescription>System administrator</cv:jobDescription>
+<cv:jobTitle>Cloud architect</cv:jobTitle>
+<cv:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">-</cv:endDate>
+<cv:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">01/09/2012</cv:startDate>
+<cv:employedIn rdf:resource="Cloud"/>
+<cv:careerLevel rdf:resource="Senior"/>
+
+<cv:skillLastUsed rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2012-02-23</cv:skillLastUsed>
+<cv:skillLevel>5</cv:skillLevel>
+<cv:skillYearsExperience rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</cv:skillYearsExperience>
+<cv:skillName>testing</cv:skillName>
+
+
+<cv:targetJobDescription>System administrator</cv:targetJobDescription>
+<cv:targetSalary>10000</cv:targetSalary>
+<cv:targetSalaryCurrency>lei</cv:targetSalaryCurrency>
+
+<acc:userId>test</acc:userId>
+<acc:password>test</acc:password>
+
+</foaf:Person>
+
+
+
+<foaf:Person rdf:ID="5">
+<foaf:name>Andrei Moisa</foaf:name>
+<foaf:title>Mr</foaf:title>
+<foaf:givenname>Andrei</foaf:givenname>
+<foaf:family_name>Moisa</foaf:family_name>
+
+<foaf:age>50</foaf:age>
+<foaf:mbox rdf:resource="mailto:am@yahoo.com"/>
+<foaf:homepage rdf:resource="www.am.com"/>
+<foaf:phone rdf:resource="tel:0745222555"/>
+
+<foaf:Organization rdf:resource="Accent"/>
+<foaf:workplaceHomepage rdf:resource="www.accent.ro"/>
+<foaf:workInfoHomepage rdf:resource="www.manager.ro"/>
+<foaf:schoolHomepage rdf:resource="www.feaa.ro"/>
+<foaf:topic_interest rdf:resource="management"/>
+
+
+
+<cv:noOfChildren>3</cv:noOfChildren>
+<cv:maritalStatus>Married</cv:maritalStatus>
+<cv:hasNationality>romanian</cv:hasNationality>
+<cv:hasDriversLicense rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cv:hasDriversLicense>
+<cv:hasCitizenship>Romania</cv:hasCitizenship>
+<cv:gender>Male</cv:gender>
+<cv:birthPlace>Iasi</cv:birthPlace>
+
+<cv:EducationalOrg>feaa iasi</cv:EducationalOrg>
+
+<cv:isCurrent rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cv:isCurrent>
+<cv:jobType>Employee</cv:jobType>
+<cv:jobDescription>Manager</cv:jobDescription>
+<cv:jobTitle>CEO</cv:jobTitle>
+<cv:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">-</cv:endDate>
+<cv:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">01/09/2000</cv:startDate>
+<cv:employedIn rdf:resource="Accent"/>
+<cv:careerLevel rdf:resource="Senior"/>
+
+<cv:skillLastUsed rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2005-02-23</cv:skillLastUsed>
+<cv:skillLevel>5</cv:skillLevel>
+<cv:skillYearsExperience rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</cv:skillYearsExperience>
+<cv:skillName>testing</cv:skillName>
+
+
+<cv:targetJobDescription>CFO</cv:targetJobDescription>
+<cv:targetSalary>15000</cv:targetSalary>
+<cv:targetSalaryCurrency>lei</cv:targetSalaryCurrency>
+
+<acc:userId>test</acc:userId>
+<acc:password>test</acc:password>
+
+</foaf:Person>
+
+
+
+<foaf:Person rdf:ID="6">
+<foaf:name>Ioana Marin</foaf:name>
+<foaf:title>Ms</foaf:title>
+<foaf:givenname>Ioana</foaf:givenname>
+<foaf:family_name>Marin</foaf:family_name>
+
+<foaf:age>24</foaf:age>
+<foaf:mbox rdf:resource="mailto:im@yahoo.com"/>
+<foaf:homepage rdf:resource="www.im.com"/>
+<foaf:phone rdf:resource="tel:0745343455"/>
+
+<foaf:Organization rdf:resource="Web Development"/>
+<foaf:workplaceHomepage rdf:resource="www.webdevelopment.ro"/>
+<foaf:workInfoHomepage rdf:resource="www.web.ro"/>
+<foaf:schoolHomepage rdf:resource="www.ghasachi.ro"/>
+<foaf:topic_interest rdf:resource="JavaScript"/>
+</foaf:Person>
+
+<foaf:knows>
+<foaf:Person>
+<foaf:name>Ionut Vasiliu</foaf:name>
+</foaf:Person>
+</foaf:knows>
+
+<cv:noOfChildren>1</cv:noOfChildren>
+<cv:maritalStatus>Married</cv:maritalStatus>
+<cv:hasNationality>romanian</cv:hasNationality>
+<cv:hasDriversLicense rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cv:hasDriversLicense>
+<cv:hasCitizenship>Romania</cv:hasCitizenship>
+<cv:gender>Female</cv:gender>
+<cv:birthPlace>Iasi</cv:birthPlace>
+
+<cv:EducationalOrg>asachi iasi</cv:EducationalOrg>
+
+<cv:isCurrent rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cv:isCurrent>
+<cv:jobType>Employee</cv:jobType>
+<cv:jobDescription>Programer</cv:jobDescription>
+<cv:jobTitle>Web developer</cv:jobTitle>
+<cv:endDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">-</cv:endDate>
+<cv:startDate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">01/09/2015</cv:startDate>
+<cv:employedIn rdf:resource="Web Development"/>
+<cv:careerLevel rdf:resource="Junior"/>
+
+<cv:skillLastUsed rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-02-23</cv:skillLastUsed>
+<cv:skillLevel>1</cv:skillLevel>
+<cv:skillYearsExperience rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</cv:skillYearsExperience>
+<cv:skillName>testing</cv:skillName>
+
+
+<cv:targetJobDescription>Java Developer</cv:targetJobDescription>
+<cv:targetSalary>3000</cv:targetSalary>
+<cv:targetSalaryCurrency>lei</cv:targetSalaryCurrency>
+
+<acc:userId>test</acc:userId>
+<acc:password>test</acc:password>
+
+</foaf:Person>
+
+
+</rdf:RDF>

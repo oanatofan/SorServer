@@ -1,15 +1,17 @@
 package com.Sor.Controller;
 
+import java.io.IOException;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import com.Sor.Model.*;
-import com.Sor.Utils.Constants;
+import com.Sor.Search.UserHelpper;
 import com.Sor.Utils.DatabaseCalls;
 
 @Path("/user")
 public class UserController {
 	DatabaseCalls dc=new DatabaseCalls();
-	
+	UserHelpper  user=new UserHelpper();
 	// http://localhost:8080/SorServer/rest/user/login?userName=Examples&userPassword=09709
 	@GET
 	@Path("/login")
@@ -20,7 +22,7 @@ public class UserController {
 		// return
 		// viewPerson.getUserLogin(userName,userPassword,securityContext);
 		LoginResponse response = new LoginResponse();
-		response=dc.verifyLogin(userName,userPassword);		
+		response=user.verifyLogin(userName,userPassword);		
 		return response;
 	}
 
@@ -32,11 +34,11 @@ public class UserController {
 			@QueryParam("familyName") String familyName,
 			@QueryParam("userMail") String userMail, @QueryParam("userPassword") String userPassword,
 			@QueryParam("userType") String userType, @Context SecurityContext securityContext)
-					throws NotFoundException {
+					throws NotFoundException, IOException {
 		// return
 		// delegate.userRegisterPost(userName,userMail,userPassword,userType,securityContext);
 		RegisterResponse response = new RegisterResponse();
-		response=dc.registerUser(userName,givenName,familyName,userMail,userPassword,userType);	
+		response=user.registerUser(userName,givenName,familyName,userMail,userPassword,userType);	
 		return response;
 	}
 
@@ -48,7 +50,7 @@ public class UserController {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String putEditPerson(Person person, @Context SecurityContext securityContext) throws NotFoundException {
-		return Constants.Succes;
+		return user.updatePerson(person);
 		// return delegate.userEditPersonPut(person,securityContext);
 	}
 
@@ -57,7 +59,7 @@ public class UserController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Person getViewPerson(@QueryParam("userId") String userId, @Context SecurityContext securityContext)
 			throws NotFoundException {
-		Person response = new Person();
+		Person response = user.getPerson(userId);
 		return response;
 		// return delegate.userViewPersonGet(userId,userType,securityContext);
 	}
@@ -70,7 +72,7 @@ public class UserController {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String putEditOrganization(Organization organization, @Context SecurityContext securityContext)
 			throws NotFoundException {
-		return Constants.Succes;
+		return user.updateOrganization(organization);
 		// return delegate.userEditOrganizationPut(person,securityContext);
 	}
 
@@ -79,7 +81,7 @@ public class UserController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Organization getViewOrganization(@QueryParam("userId") String userId,
 			@Context SecurityContext securityContext) throws NotFoundException {
-		Organization response = new Organization();
+		Organization response =user.getOrganization(userId);
 		return response;
 		// return
 		// delegate.userViewOrganizationGet(userId,userType,securityContext);

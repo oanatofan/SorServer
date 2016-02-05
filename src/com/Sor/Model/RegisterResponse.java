@@ -3,16 +3,16 @@ package com.Sor.Model;
 import java.util.Objects;
 
 public class RegisterResponse {
-	private String userId = null;
+	private int userId = 0;
 	private String userType = null;
-	private Boolean logedIn = null;
+	private Boolean logedIn = false;
 
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserId(int id) {
+		this.userId = id;
 	}
 
 	public String getUserType() {
