@@ -7,8 +7,8 @@ public class Worked {
 	private String workedId = null;
 	private String organizationId = null;
 	private Job job=new Job();
-	private Date beginDate = null;
-	private Date endDate = null;
+	private String beginDate = null;
+	private String endDate = null;
 	private String homepage;
 	
 	/**
@@ -52,23 +52,23 @@ public class Worked {
 	 * the stating date of the job
 	 **/
 
-	public Date getBeginDate() {
+	public String getBeginDate() {
 		return beginDate;
 	}
 
-	public void setBeginDate(Date beginDate) {
-		this.beginDate = beginDate;
+	public void setBeginDate(String o) {
+		this.beginDate = o;
 	}
 
 	/**
 	 * the end date of the job , if still working there it's empty
 	 **/
 
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 

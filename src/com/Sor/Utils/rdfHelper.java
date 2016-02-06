@@ -16,7 +16,6 @@ import org.apache.jena.update.UpdateAction;
 
 import java.io.*;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -212,7 +211,7 @@ public class rdfHelper {
 		Skill skill = new Skill();
 		Studied stud = new Studied();
 		Job job = new Job();
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+		//SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
 		while (results.hasNext()) {
 			QuerySolution sol = results.next();
 			String s = sol.getResource(var2).getLocalName();
@@ -239,11 +238,11 @@ public class rdfHelper {
 				job.setJobName(o);
 			// work.setJob(o);
 			if (s.equals("startDate"))
-				work.setBeginDate(formatter.parse(o));
+				work.setBeginDate(o);
 			if (s.equals("Organization"))
 				work.setOrganizationId(o);
 			if (s.equals("endDate"))
-				work.setEndDate(formatter.parse(o));
+				work.setEndDate(o);
 			if (s.equals("careerLevel"))
 				job.setJobCareerLevel(o);
 			if (s.equals("workplaceHomepage"))
@@ -300,11 +299,35 @@ public class rdfHelper {
 
 	public Organization getOrganization(String userId) {
 		// TODO Auto-generated method stub
-		return null;
+		return new Organization();
 	}
 
 	public String updatePerson(Person person) {
-		// TODO Auto-generated method stub
+		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
+		InputStream in = FileManager.get().open(Constants.inputFileName);
+		//FileWriter out = new FileWriter("persons.rdf");
+		if (in == null) {
+			throwException();
+		}
+
+		// FileWriter out = new FileWriter( inputFileName );
+		// RDFWriter w = model.getWriter("RDF/XML-ABBREV");
+		model.read(Constants.inputFileName, "");
+		String insert = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  "
+				+ "PREFIX foaf:<http://xmlns.com/foaf/0.1/>"
+				+ "PREFIX cv:<http://captsolo.net/semweb/resume/0.2/cv.rdf/>"
+				+ "PREFIX cvb:<http://captsolo.net/semweb/resume/0.2/base.rdf//>"
+				+ "PREFIX acc:<http://www.semanticdesktop.org/ontologies/2011/10/05/dao/v1.0/>"+
+			    		
+			              
+			                "DELETE { ?a foaf:title \"Mr1\" } " +
+			                "INSERT { ?a foaf:title \"Mr\" } " +
+			                "WHERE { ?a foaf:title \"Mr1\" } ";
+
+		     //   UpdateAction.parseExecute( rename, model );
+
+		       // model.write( System.out, "TTL" );	
 		return null;
 	}
 
