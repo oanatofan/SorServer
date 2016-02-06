@@ -134,6 +134,50 @@ public class rdfHelper {
 		model.write(System.out);
 	}
 
+	public List<Person> getfriends(String userid) {
+		String querry = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  "
+				+ "PREFIX foaf:<http://xmlns.com/foaf/0.1/>"
+				+ "PREFIX cv:<http://captsolo.net/semweb/resume/0.2/cv.rdf/>"
+				+ "PREFIX cvb:<http://captsolo.net/semweb/resume/0.2/base.rdf//>"
+				+ "PREFIX acc:<http://www.semanticdesktop.org/ontologies/2011/10/05/dao/v1.0/>"
+				+ "select Distinct ?bname ?c where  {" + "?person a foaf:Person. "
+
+				+ " ?person foaf:knows ?b. " + " ?b foaf:name ?bname. " + " ?c a foaf:Person; " + " foaf:name ?name "
+
+				+ " FILTER  (?person=<" + Constants.inputFileName + "#" + userid + "> && ?name=?bname ) } ";
+		Model model = ModelFactory.createDefaultModel();
+
+		InputStream in = FileManager.get().open(Constants.inputFileName);
+		model.read(Constants.inputFileName, "");
+		if (in == null) {
+			throwException();
+		}
+		Query query = QueryFactory.create(querry);
+		QueryExecution qe = QueryExecutionFactory.create(query, model);
+		ResultSet results = qe.execSelect();
+
+		List<String> varNames = results.getResultVars();
+		String var1 = varNames.get(0);		
+		List<Person> result = new ArrayList<Person>();
+		while (results.hasNext()) {
+			QuerySolution binding = results.nextSolution();
+			String pers = binding.get(var1).toString();
+
+			Resource subj = (Resource) binding.get("c");
+			String id;
+			if (subj.getURI() != null && subj.getURI().contains(Constants.inputFileName)) {
+				id = subj.getURI().substring((subj.getURI().indexOf("#") + 1));
+				Person p = new Person();
+				p.setUserId(id);
+				p.setUserName(pers);
+				result.add(p);
+			}
+		}
+		qe.close();
+		return result;
+	}
+
 	public Person getPerson(String userId) throws ParseException {
 		// TODO Auto-generated method stub
 
@@ -211,6 +255,7 @@ public class rdfHelper {
 		worked.add(work);
 		person.setStudied(studied);
 		person.setKnowledge(skills);
+		person.setFriends(getfriends(userId));
 		qe.close();
 		return person;
 	}
