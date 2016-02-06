@@ -1,6 +1,7 @@
 package com.Sor.Controller;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
@@ -58,7 +59,7 @@ public class UserController {
 	@Path("/viewPerson")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Person getViewPerson(@QueryParam("userId") String userId, @Context SecurityContext securityContext)
-			throws NotFoundException {
+			throws NotFoundException, ParseException {
 		Person response = user.getPerson(userId);
 		return response;
 		// return delegate.userViewPersonGet(userId,userType,securityContext);

@@ -3,16 +3,10 @@
  */
 package com.Sor.Search;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
 
-import org.apache.jena.ontology.OntModel;
-import org.apache.jena.ontology.OntModelSpec;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.RDFWriter;
-import org.apache.jena.update.UpdateAction;
-import org.apache.jena.util.FileManager;
+import java.io.IOException;
+import java.text.ParseException;
+
 
 import com.Sor.Model.*;
 import com.Sor.Utils.Constants;
@@ -32,7 +26,7 @@ public class UserHelpper {
 		maxId = helper.getMaxId();
 	}
 
-	public Person getPerson(String userId) {
+	public Person getPerson(String userId) throws ParseException {
 		return helper.getPerson(userId);
 	}
 

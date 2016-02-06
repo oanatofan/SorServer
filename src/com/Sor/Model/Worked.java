@@ -9,6 +9,7 @@ public class Worked {
 	private Job job=new Job();
 	private Date beginDate = null;
 	private Date endDate = null;
+	private String homepage;
 	
 	/**
 	 * Job of the person
@@ -82,12 +83,13 @@ public class Worked {
 		Worked worked = (Worked) o;
 		return Objects.equals(workedId, worked.workedId) && Objects.equals(organizationId, worked.organizationId)
 				&& Objects.equals(worked, worked.job)
-				&& Objects.equals(beginDate, worked.beginDate) && Objects.equals(endDate, worked.endDate);
+				&& Objects.equals(beginDate, worked.beginDate) && Objects.equals(endDate, worked.endDate)
+				&& Objects.equals(homepage, worked.homepage);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(workedId, organizationId, job,  beginDate, endDate);
+		return Objects.hash(workedId, organizationId, job,  beginDate, endDate,homepage);
 	}
 
 	@Override
@@ -100,6 +102,7 @@ public class Worked {
 		sb.append("    job: ").append(toIndentedString(job)).append("\n");
 		sb.append("    beginDate: ").append(toIndentedString(beginDate)).append("\n");
 		sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+		sb.append("    homepage: ").append(toIndentedString(homepage)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}
@@ -113,5 +116,14 @@ public class Worked {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
+	}
+
+	public void setHomepage(String homepage) {
+		this.homepage=homepage;
+		
+	}
+	public String getHomepage() {
+		return homepage;
+		
 	}
 }
