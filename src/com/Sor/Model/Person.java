@@ -125,7 +125,7 @@ public class Person {
 		return studied;
 	}
 
-	public void seStudied(List<Studied> studied) {
+	public void setStudied(List<Studied> studied) {
 		this.studied = studied;
 	}
 

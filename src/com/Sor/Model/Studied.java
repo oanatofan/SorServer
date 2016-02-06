@@ -8,7 +8,7 @@ public class Studied {
 	private String organizationId = null;
 	private Date beginDate = null;
 	private Date endDate = null;
-
+	private String homepage=null;
 	/**
 	 * Unique identifier.
 	 **/
@@ -20,7 +20,13 @@ public class Studied {
 	public void setStudiedId(String studiedId) {
 		this.studiedId = studiedId;
 	}
+	public String getHomepage() {
+		return homepage;
+	}
 
+	public void setHomepage(String homepage) {
+		this.homepage = homepage;
+	}
 	/**
 	 * the name of the Knowledge
 	 **/
@@ -67,12 +73,13 @@ public class Studied {
 		}
 		Studied studied = (Studied) o;
 		return Objects.equals(studiedId, studied.studiedId) && Objects.equals(organizationId, studied.organizationId)
-				&& Objects.equals(beginDate, studied.beginDate) && Objects.equals(endDate, studied.endDate);
+				&& Objects.equals(beginDate, studied.beginDate) && Objects.equals(endDate, studied.endDate)
+				&& Objects.equals(homepage, studied.homepage);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(studiedId, organizationId, beginDate, endDate);
+		return Objects.hash(studiedId, organizationId,homepage, beginDate, endDate);
 	}
 
 	@Override
@@ -82,8 +89,10 @@ public class Studied {
 
 		sb.append("    studiedId: ").append(toIndentedString(studiedId)).append("\n");
 		sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
+		sb.append("    homepage: ").append(toIndentedString(homepage)).append("\n");
 		sb.append("    beginDate: ").append(toIndentedString(beginDate)).append("\n");
 		sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
+
 		sb.append("}");
 		return sb.toString();
 	}

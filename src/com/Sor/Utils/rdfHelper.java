@@ -164,6 +164,8 @@ public class rdfHelper {
 		String var3 = varNames.get(2);
 		Person person=new Person();
 		person.setUserId(userId);
+		List<Studied> studied=new ArrayList<Studied>();
+		Studied stud=new Studied();
 	    while (results.hasNext())
 	 	{
 	    	QuerySolution sol = results.next();	    
@@ -179,12 +181,18 @@ public class rdfHelper {
 			if (s.equals("phone"))
 				o=object.toString();
 			SetPersonValue(person,s,o);
+			if(s.equals("EducationalOrg"))
+				stud.setOrganizationId(o);
+			if(s.equals("schoolHomepage"))
+				stud.setHomepage(o);
 		}
+	    studied.add(stud);
+	    person.setStudied(studied);
 	   qe.close();
 	   return person;
 	}
-//jobTitle,Organization,endDate,schoolHomepage,jobDescription,birthPlace,careerLevel,skillYearsExperience,gender,employedIn,skillLevel
-	//workInfoHomepage,targetJobDescription,EducationalOrg,jobType,skillLastUsed,knows,workplaceHomepage,startDate,skillName,topic_interest
+//jobTitle,Organization==Endava,endDate,,jobDescription,birthPlace-nu,careerLevel,skillYearsExperience,gender,employedIn,skillLevel
+	//workInfoHomepage,targetJobDescription,,jobType,skillLastUsed,knows,workplaceHomepage,startDate,skillName,topic_interest
 	private void SetPersonValue(Person person, String propertyName, String o) {
 		switch (propertyName) {
 		  case "hasNationality":
