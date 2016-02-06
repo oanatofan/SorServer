@@ -177,6 +177,7 @@ public class Person {
 				&& Objects.equals(givenName, person.givenName) && Objects.equals(familyName, person.familyName)
 				&& Objects.equals(userMail, person.userMail) && Objects.equals(userAddress, person.userAddress)
 				&& Objects.equals(hobbies, person.hobbies) && Objects.equals(worked, person.worked)
+				&& Objects.equals(studied, person.studied)
 				&& Objects.equals(knowledge, person.knowledge) && Objects.equals(jobesSearched, person.jobesSearched)
 				&& Objects.equals(friends, person.friends)&&Objects.equals(nationality, person.nationality)
 				&&Objects.equals(title, person.title)&&Objects.equals(hasDriversLicense, person.hasDriversLicense)
@@ -188,7 +189,7 @@ public class Person {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(userId, userName, givenName, familyName, userMail, userAddress, hobbies, worked, knowledge, jobesSearched,
+		return Objects.hash(userId, userName, givenName, familyName, userMail, userAddress, hobbies, worked,studied, knowledge, jobesSearched,
 				friends,nationality,title,hasDriversLicense,homepage,name,password,married,salary,age,phone);
 	}
 
@@ -205,6 +206,7 @@ public class Person {
 		sb.append("    userAddress: ").append(toIndentedString(userAddress)).append("\n");
 		sb.append("    hobbies: ").append(toIndentedString(hobbies)).append("\n");
 		sb.append("    worked: ").append(toIndentedString(worked)).append("\n");
+		sb.append("    studied: ").append(toIndentedString(studied)).append("\n");
 		sb.append("    knowledge: ").append(toIndentedString(knowledge)).append("\n");
 		sb.append("    jobesSearched: ").append(toIndentedString(jobesSearched)).append("\n");
 		sb.append("    friends: ").append(toIndentedString(friends)).append("\n");
