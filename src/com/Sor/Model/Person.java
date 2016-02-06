@@ -16,6 +16,16 @@ public class Person {
 	private List<Job> jobesSearched = new ArrayList<Job>();
 	private List<Person> friends = new ArrayList<Person>();
 	private List<Studied> studied=new ArrayList<Studied>();
+	private String nationality;
+	private String title;
+	private String hasDriversLicense;
+	private String homepage;
+	private String name;
+	private String password;
+	private String married;
+	private String salary;
+	private String age;
+	private String phone;
 
 	/**
 	 * Unique identifier.
@@ -168,13 +178,18 @@ public class Person {
 				&& Objects.equals(userMail, person.userMail) && Objects.equals(userAddress, person.userAddress)
 				&& Objects.equals(hobbies, person.hobbies) && Objects.equals(worked, person.worked)
 				&& Objects.equals(knowledge, person.knowledge) && Objects.equals(jobesSearched, person.jobesSearched)
-				&& Objects.equals(friends, person.friends);
+				&& Objects.equals(friends, person.friends)&&Objects.equals(nationality, person.nationality)
+				&&Objects.equals(title, person.title)&&Objects.equals(hasDriversLicense, person.hasDriversLicense)
+				&&Objects.equals(homepage, person.homepage)&&Objects.equals(name, person.name)
+				&&Objects.equals(password, person.password)&&Objects.equals(married, person.married)
+				&&Objects.equals(salary, person.salary)&&Objects.equals(age, person.age)
+				&&Objects.equals(phone, person.phone);
 	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(userId, userName, givenName, familyName, userMail, userAddress, hobbies, worked, knowledge, jobesSearched,
-				friends);
+				friends,nationality,title,hasDriversLicense,homepage,name,password,married,salary,age,phone);
 	}
 
 	@Override
@@ -193,6 +208,16 @@ public class Person {
 		sb.append("    knowledge: ").append(toIndentedString(knowledge)).append("\n");
 		sb.append("    jobesSearched: ").append(toIndentedString(jobesSearched)).append("\n");
 		sb.append("    friends: ").append(toIndentedString(friends)).append("\n");
+		sb.append("    nationality: ").append(toIndentedString(nationality)).append("\n");
+		sb.append("    title: ").append(toIndentedString(title)).append("\n");
+		sb.append("    hasDriversLicense: ").append(toIndentedString(hasDriversLicense)).append("\n");
+		sb.append("    homepage: ").append(toIndentedString(hasDriversLicense)).append("\n");
+		sb.append("    name: ").append(toIndentedString(name)).append("\n");
+		sb.append("    password: ").append(toIndentedString(password)).append("\n");
+		sb.append("    married: ").append(toIndentedString(married)).append("\n");
+		sb.append("    salary: ").append(toIndentedString(salary)).append("\n");
+		sb.append("    age: ").append(toIndentedString(age)).append("\n");
+		sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}
@@ -206,5 +231,99 @@ public class Person {
 			return "null";
 		}
 		return o.toString().replace("\n", "\n    ");
+	}
+
+	public void setNationality(String nationality) {
+		this.nationality=nationality;
+		
+		
+	}
+	public String getNationality() {
+		return this.nationality;
+		
+		
+	}
+
+	public void setTitle(String title) {
+		 this.title=title;
+		
+	}
+	public String getTitle() {
+		return this.title;
+		
+		
+	}
+
+	public void setDriverLicense(String hasDriversLicense) {
+		this.hasDriversLicense=hasDriversLicense;
+		
+	}
+	public String getDriverLicense() {
+		return this.hasDriversLicense;
+		
+		
+	}
+
+	public String getHomepage() {
+		return homepage;
+	}
+
+	public void setHomepage(String homepage) {
+		this.homepage = homepage;
+	}
+
+	public void setName(String name) {
+		this.name=name;
+		
+	}
+	public String getName() {
+		return name;
+		
+	}
+
+	public void setUserPassword(String password) {
+		this.password=password;
+		
+	}
+	public String getUserPassword() {
+		return password;
+		
+	}
+	public String getMarried() {
+		return married;
+		
+	}
+	public void setMarried(String married) {
+		this.married=married;
+		
+	}
+	
+	public String getSalary() {
+		return salary;
+		
+	}
+
+	public void setSalary(String salary) {
+		this.salary=salary;
+		
+	}
+	
+	public String getAge() {
+		return age;
+		
+	}
+
+	public void setAge(String age) {
+		this.age=age;
+		
+	}
+
+	public String getPhone() {
+		return phone;
+		
+	}
+	public void setPhone(String phone) {
+		this.phone=phone;
+		
 	}
 }
