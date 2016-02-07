@@ -74,6 +74,8 @@ public class SimpleSearch {
 				listSugestedFriends.add(nod);
 			}
 		}
+		n = listSugestedFriends.size();
+		System.out.println(n);
 		List<Person> response = new ArrayList<Person>();
 		for (int i = 0; i < n; i++) {
 			node = listSugestedFriends.get(i);

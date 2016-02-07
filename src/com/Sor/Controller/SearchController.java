@@ -55,18 +55,19 @@ public class SearchController {
 		// return
 		// delegate.searchSuggestOrganizationsGet(userId,userType,securityContext);
 	}
-
+//http://localhost:8080/SorServer/rest/search/suggestPersons?userId=1
 	// suggest persons for an organizations(type is organization) and friends
 	// for persons(type is person)
 	@GET
 	@Path("/suggestPersons")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public List<Person> getSuggestPerson(@QueryParam("userId") String userId, @QueryParam("type") String type,
 			@Context SecurityContext securityContext) throws NotFoundException, ParseException {
-		Person per = new Person();
+		//Person per = new Person();
 		List<Person> response = new ArrayList<Person>();
 		response=search.sugestPerson(userId);
-		response.add(per);
+		System.out.println(response);
+		//response.add(per);
 		return response;
 		// return
 		// delegate.searchSuggestPersonGet(userId,userType,securityContext);

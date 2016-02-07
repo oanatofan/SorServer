@@ -186,7 +186,7 @@ public class rdfHelper {
 
 		// read the RDF/XML file
 		model.read(Constants.inputFileName, "RDF/XML");
-
+		System.out.println("userId=" + userId);
 		// Create a new query
 		String queryString = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
 				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  "
@@ -206,6 +206,8 @@ public class rdfHelper {
 		String var3 = varNames.get(2);
 		Person person = new Person();
 		person.setUserId(userId);
+		// System.out.println("brfore "+person.toString());
+
 		List<Studied> studied = new ArrayList<Studied>();
 		List<Skill> skills = new ArrayList<Skill>();
 		List<Worked> worked = new ArrayList<Worked>();
@@ -225,6 +227,7 @@ public class rdfHelper {
 				o = object.asLiteral().getString();
 
 			}
+
 			if (s.equals("phone"))
 				o = object.toString();
 			SetPersonValue(person, s, o);
@@ -250,6 +253,7 @@ public class rdfHelper {
 			if (s.equals("workplaceHomepage"))
 				work.setHomepage(o);
 		}
+
 		skills.add(skill);
 		studied.add(stud);
 		work.setJob(job);
@@ -258,43 +262,73 @@ public class rdfHelper {
 		person.setKnowledge(skills);
 		person.setFriends(getfriends(userId));
 		qe.close();
+		// System.out.println(person.toString());
 		return person;
 	}
 
 	// jobTitle,Organization==Endava,,,jobDescription,birthPlace-nu,,,gender,employedIn,skillLevel
 	// workInfoHomepage,targetJobDescription,,,skillLastUsed,knows,,,,topic_interest
 	private void SetPersonValue(Person person, String propertyName, String o) {
+		// System.out.println("userId="+2+" s="+propertyName+" o="+o);
+		// System.out.println(person.toString());
 		switch (propertyName) {
 		case "hasNationality": {
 			person.setNationality(o);
+			break;
 		}
-		case "title":
+		case "title": {
 			person.setTitle(o);
+			break;
+		}
 
-		case "userId":
+		case "userId": {
 			person.setUserName(o);
-		case "family_name":
+			break;
+		}
+		case "family_name": {
 			person.setFamilyName(o);
-		case "givenname":
+			break;
+		}
+		case "givenname": {
 			person.setGivenName(o);
-		case "name":
+			break;
+		}
+		case "name": {
 			person.setName(o);
-		case "mbox":
+			break;
+		}
+		case "mbox": {
 			person.setUserMail(o);
-		case "hasDriversLicense":
+			break;
+		}
+		case "hasDriversLicense": {
 			person.setDriverLicense(o);
-		case "homepage":
+			break;
+		}
+		case "homepage": {
 			person.setHomepage(o);
-		case "password":
+			break;
+		}
+		case "password": {
 			person.setUserPassword(o);
-		case "maritalStatus":
+			break;
+		}
+		case "maritalStatus": {
 			person.setMarried(o);
-		case "targetSalary":
+			break;
+		}
+		case "targetSalary": {
 			person.setSalary(o);
-		case "age":
+			break;
+		}
+		case "age": {
 			person.setAge(o);
-		case "phone":
+			break;
+		}
+		case "phone": {
 			person.setPhone(o);
+			break;
+		}
 		}
 
 	}

@@ -54,7 +54,7 @@ public class UserController {
 		return user.updatePerson(person);
 		// return delegate.userEditPersonPut(person,securityContext);
 	}
-
+//	http://localhost:8080/SorServer/rest/user/viewPerson?userId=1
 	@GET
 	@Path("/viewPerson")
 	@Produces(MediaType.APPLICATION_JSON)
