@@ -4,7 +4,6 @@
 package com.Sor.Search;
 
 import com.Sor.Model.*;
-import com.Sor.Utils.Constants;
 import com.Sor.Utils.Node;
 import com.Sor.Utils.rdfHelper;
 
@@ -26,9 +25,9 @@ public class SimpleSearch {
 	public List<Person> sugestPerson(String userId) throws ParseException {
 		ArrayList<Node> nodes = helpper.createGraph();
 		int n = nodes.size();
-		Node currentPers=null;
+		Node currentPers = null;
 		ArrayList<Node> curentFriends = new ArrayList<Node>();
-		ArrayList<Node> sugestedFriends = new ArrayList<Node>();
+		ArrayList<Node> tmpSugestedFriends = new ArrayList<Node>();
 		Node node;
 		for (int i = 0; i < n; i++) {
 			node = nodes.get(i);
@@ -47,7 +46,7 @@ public class SimpleSearch {
 			if (prop.contains("knows")) {
 				curentFriends.add(node);
 				if (!subj.endsWith("#" + userId)) {
-					sugestedFriends.add(node);
+					tmpSugestedFriends.add(node);
 				}
 			}
 		}
@@ -60,18 +59,24 @@ public class SimpleSearch {
 				String prop = nodej.getProperty();
 				String subj = nodej.getURI();
 				if (prop.contains("knows")) {
-					sugestedFriends.add(0, nodej);
+					tmpSugestedFriends.add(0, nodej);
 					if (!subj.endsWith("#" + userId)) {
-						sugestedFriends.add(nodej);
+						tmpSugestedFriends.add(nodej);
 					}
 				}
 
 			}
 		}
-		n = sugestedFriends.size();
+		n = tmpSugestedFriends.size();
+		List<Node> listSugestedFriends = new ArrayList<Node>();
+		for (Node nod : tmpSugestedFriends) {
+			if (!listSugestedFriends.contains(nod)) {
+				listSugestedFriends.add(nod);
+			}
+		}
 		List<Person> response = new ArrayList<Person>();
 		for (int i = 0; i < n; i++) {
-			node = sugestedFriends.get(i);
+			node = listSugestedFriends.get(i);
 			String subj = node.getURI();
 			String persID = subj.substring((subj.indexOf("#") + 1));
 			Person user = helpper.getPerson(persID);
