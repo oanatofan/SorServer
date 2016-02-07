@@ -12,6 +12,8 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.Statement;
+import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.update.UpdateAction;
 
 import java.io.*;
@@ -343,9 +345,9 @@ public class rdfHelper {
 				+ person.getUserPassword() + "' ;" + "  foaf:name '" + person.getName() + "'; "
 				+ "cv:hasDriversLicense '" + person.getDriverLicense() + "' ;" + "  cv:maritalStatus '"
 				+ person.getMarried() + "' ;" + "cv:targetSalary '" + person.getSalary() + "' ;" + "  foaf:age '"
-				+ person.getAge() + "' ;" + friends  +"cv:phone '" + person.getPhone() + "' ;"
-				+ "  cv:EducationalOrg '" + (person.getStudied().get(0).getOrganizationId()) + "' ;"
-				+ "foaf:schoolHomepage '" + (person.getStudied().get(0).getHomepage()) + "' ;" + "  cv:skillName '"
+				+ person.getAge() + "' ;" + friends + "cv:phone '" + person.getPhone() + "' ;" + "  cv:EducationalOrg '"
+				+ (person.getStudied().get(0).getOrganizationId()) + "' ;" + "foaf:schoolHomepage '"
+				+ (person.getStudied().get(0).getHomepage()) + "' ;" + "  cv:skillName '"
 				+ (person.getKnowledge().get(0).getSkillName()) + "' ;" + "cv:skillYearsExperience '"
 				+ (person.getKnowledge().get(0).getExperience()) + "' ;" + "  cv:jobType '"
 				+ (person.getWorked().get(0).getJob().getJobName()) + "' ;" + "cv:startDate '"
@@ -410,8 +412,59 @@ public class rdfHelper {
 		throw new IllegalArgumentException("File: " + Constants.inputFileName + " not found");
 	}
 
-	public ArrayList<Person> getRdf() {
-		// TODO Auto-generated method stub
-		return null;
+	private ArrayList<Node> getNodes() {
+		Model model = ModelFactory.createDefaultModel();
+		StmtIterator iter;
+		Statement stmt;
+		InputStream in = FileManager.get().open(Constants.inputFileName);
+		ArrayList<Node> nodes = new ArrayList<Node>();
+		if (in == null) {
+			throwException();
+		}
+
+		// read the RDF/XML file
+		model.read(in, "");
+		iter = model.listStatements();
+		// a
+		while (iter.hasNext()) {
+			stmt = iter.next();
+			nodes.add(new Node(stmt.getSubject().getNameSpace(), stmt.getPredicate().getLocalName(),
+					stmt.getObject().toString()));
+
+		}
+		return nodes;
+
 	}
+
+	public ArrayList<Node> createGraph() {
+		ArrayList<Node> nodes = getNodes();
+		int n = nodes.size();
+		for (int i = 0; i < n; i++) {
+			for (int j = i + 1; j < n; j++) {
+				String uri1 = nodes.get(i).getURI().toString();
+				String uri2 = nodes.get(j).getURI().toString();
+				String prop1 = nodes.get(i).getProperty().toString();
+				String prop2 = nodes.get(j).getProperty().toString();
+				String value1 = nodes.get(i).getValue().toString();
+				String value2 = nodes.get(j).getValue().toString();
+				if ((uri1).equals(uri2)) {
+					nodes.get(i).addNode(nodes.get(j));
+					nodes.get(j).addNode(nodes.get(i));
+				}
+
+				if (prop1.equals(prop2) && value1.equals(value2)) {
+					nodes.get(i).addNode(nodes.get(j));
+					nodes.get(j).addNode(nodes.get(i));
+				}
+				if (uri1.equals(value2)) {
+					nodes.get(i).addNode(nodes.get(j));
+				}
+				if (uri2.equals(value1)) {
+					nodes.get(j).addNode(nodes.get(i));
+				}
+			}
+		}
+		return nodes;
+	}
+
 }

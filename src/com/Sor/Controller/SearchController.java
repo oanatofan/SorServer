@@ -1,12 +1,20 @@
 package com.Sor.Controller;
 
+import java.text.ParseException;
 import java.util.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import com.Sor.Model.*;
+import com.Sor.Search.SimpleSearch;
+import com.Sor.Search.UserHelpper;
 @Path("/search")
 public class SearchController {
+	
+	private SimpleSearch search;
 
+	public SearchController() {
+		 search=new SimpleSearch();
+	}
 	@GET
 	@Path("/searchOrganization")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -54,9 +62,10 @@ public class SearchController {
 	@Path("/suggestPersons")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Person> getSuggestPerson(@QueryParam("userId") String userId, @QueryParam("type") String type,
-			@Context SecurityContext securityContext) throws NotFoundException {
+			@Context SecurityContext securityContext) throws NotFoundException, ParseException {
 		Person per = new Person();
 		List<Person> response = new ArrayList<Person>();
+		response=search.sugestPerson(userId);
 		response.add(per);
 		return response;
 		// return
