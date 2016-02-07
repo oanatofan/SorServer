@@ -60,15 +60,15 @@ public class SearchController {
 	// for persons(type is person)
 	@GET
 	@Path("/suggestPersons")
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public List<Person> getSuggestPerson(@QueryParam("userId") String userId, @QueryParam("type") String type,
+	@Produces(MediaType.TEXT_PLAIN)
+	public String getSuggestPerson(@QueryParam("userId") String userId, @QueryParam("type") String type,
 			@Context SecurityContext securityContext) throws NotFoundException, ParseException {
 		//Person per = new Person();
 		List<Person> response = new ArrayList<Person>();
 		response=search.sugestPerson(userId);
 		System.out.println(response);
 		//response.add(per);
-		return response;
+		return response.toString();
 		// return
 		// delegate.searchSuggestPersonGet(userId,userType,securityContext);
 	}

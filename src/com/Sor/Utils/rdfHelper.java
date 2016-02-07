@@ -171,7 +171,7 @@ public class rdfHelper {
 				id = subj.getURI().substring((subj.getURI().indexOf("#") + 1));
 				Person p = new Person();
 				p.setUserId(id);
-				p.setUserName(pers);
+				p.setName(pers);
 				result.add(p);
 			}
 		}
