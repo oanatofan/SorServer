@@ -34,7 +34,7 @@ public class UserHelpper {
 		return helper.getOrganization(userId);
 	}
 
-	public String updatePerson(Person person) {
+	public String updatePerson(Person person) throws IOException {
 		// TODO Auto-generated method stub
 		return helper.updatePerson(person);
 	}

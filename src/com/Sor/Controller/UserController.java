@@ -50,7 +50,7 @@ public class UserController {
 	@Path("/editPerson")
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String putEditPerson(Person person, @Context SecurityContext securityContext) throws NotFoundException {
+	public String putEditPerson(Person person, @Context SecurityContext securityContext) throws NotFoundException, IOException {
 		return user.updatePerson(person);
 		// return delegate.userEditPersonPut(person,securityContext);
 	}

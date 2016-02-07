@@ -23,12 +23,7 @@
 <foaf:schoolHomepage rdf:resource="www.fii.ro"/>
 <foaf:topic_interest rdf:resource="java"/>
 
-<foaf:knows>
-<foaf:Person>
-<foaf:name>George Dinu</foaf:name>
-</foaf:Person>
-</foaf:knows>
-
+<foaf:knows rdf:resource="#2"/>
 <cv:noOfChildren>0</cv:noOfChildren>
 <cv:maritalStatus>Single</cv:maritalStatus>
 <cv:hasNationality>romanian</cv:hasNationality>
@@ -83,11 +78,8 @@
 <foaf:schoolHomepage rdf:resource="www.uaic.ro"/>
 <foaf:topic_interest rdf:resource="windows"/>
 
-<foaf:knows>
-<foaf:Person>
-<foaf:name>Ana Popa</foaf:name>
-</foaf:Person>
-</foaf:knows>
+<foaf:knows rdf:resource="#3"/>
+
 
 <cv:noOfChildren>1</cv:noOfChildren>
 <cv:maritalStatus>Married</cv:maritalStatus>
@@ -143,11 +135,8 @@
 <foaf:schoolHomepage rdf:resource="www.fii.ro"/>
 <foaf:topic_interest rdf:resource="testing"/>
 
-<foaf:knows>
-<foaf:Person>
-<foaf:name>Alexandru Radu</foaf:name>
-</foaf:Person>
-</foaf:knows>
+<foaf:knows rdf:resource="#4"/>
+
 
 
 <cv:noOfChildren>0</cv:noOfChildren>
@@ -203,17 +192,8 @@
 <foaf:schoolHomepage rdf:resource="www.ghasachi.ro"/>
 <foaf:topic_interest rdf:resource="admin"/>
 
-<foaf:knows>
-<foaf:Person>
-<foaf:name>Andrei Moisa</foaf:name>
-</foaf:Person>
-</foaf:knows>
-
-<foaf:knows>
-<foaf:Person>
-<foaf:name>Ioana Marin</foaf:name>
-</foaf:Person>
-</foaf:knows>
+<foaf:knows rdf:resource="#5"/>
+<foaf:knows rdf:resource="#6"/>
 
 <cv:noOfChildren>2</cv:noOfChildren>
 <cv:maritalStatus>Married</cv:maritalStatus>
@@ -324,11 +304,7 @@
 <foaf:topic_interest rdf:resource="JavaScript"/>
 
 
-<foaf:knows>
-<foaf:Person>
-<foaf:name>Ionut Vasiliu</foaf:name>
-</foaf:Person>
-</foaf:knows>
+<foaf:knows rdf:resource="#1"/>
 
 <cv:noOfChildren>1</cv:noOfChildren>
 <cv:maritalStatus>Married</cv:maritalStatus>

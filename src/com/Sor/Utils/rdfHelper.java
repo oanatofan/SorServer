@@ -157,7 +157,7 @@ public class rdfHelper {
 		ResultSet results = qe.execSelect();
 
 		List<String> varNames = results.getResultVars();
-		String var1 = varNames.get(0);		
+		String var1 = varNames.get(0);
 		List<Person> result = new ArrayList<Person>();
 		while (results.hasNext()) {
 			QuerySolution binding = results.nextSolution();
@@ -211,7 +211,7 @@ public class rdfHelper {
 		Skill skill = new Skill();
 		Studied stud = new Studied();
 		Job job = new Job();
-		//SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+		// SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
 		while (results.hasNext()) {
 			QuerySolution sol = results.next();
 			String s = sol.getResource(var2).getLocalName();
@@ -302,10 +302,10 @@ public class rdfHelper {
 		return new Organization();
 	}
 
-	public String updatePerson(Person person) {
+	public String updatePerson(Person person) throws IOException {
 		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
 		InputStream in = FileManager.get().open(Constants.inputFileName);
-		//FileWriter out = new FileWriter("persons.rdf");
+		FileWriter out = new FileWriter("persons.rdf");
 		if (in == null) {
 			throwException();
 		}
@@ -313,22 +313,52 @@ public class rdfHelper {
 		// FileWriter out = new FileWriter( inputFileName );
 		// RDFWriter w = model.getWriter("RDF/XML-ABBREV");
 		model.read(Constants.inputFileName, "");
+
+		String delete = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  "
+				+ "PREFIX foaf:<http://xmlns.com/foaf/0.1/>"
+				+ "PREFIX cv:<http://captsolo.net/semweb/resume/0.2/cv.rdf/>"
+				+ "PREFIX cvb:<http://captsolo.net/semweb/resume/0.2/base.rdf//>"
+				+ "PREFIX acc:<http://www.semanticdesktop.org/ontologies/2011/10/05/dao/v1.0/>"
+				+ "DELETE {?s ?p ?o} where {  ?s ?p ?o Filter (?s= <http://localhost:8080/SorServer/persons.rdf#"
+				+ person.getUserId() + "> ) }";
+		UpdateAction.parseExecute(delete, model);
+		// RDFWriter w = model.getWriter("RDF/XML-ABBREV");
+		model.write(out);// TO-DO ai grija sa dai path-ul correct
+		model.read(Constants.inputFileName, "");
+		String friends = "";
+		for (Person f : person.getFriends()) {
+			friends = friends + " foaf:knows '" + Constants.inputFileName + "#" + f.getUserId() + "'; ";
+
+		}
 		String insert = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
 				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  "
 				+ "PREFIX foaf:<http://xmlns.com/foaf/0.1/>"
 				+ "PREFIX cv:<http://captsolo.net/semweb/resume/0.2/cv.rdf/>"
 				+ "PREFIX cvb:<http://captsolo.net/semweb/resume/0.2/base.rdf//>"
-				+ "PREFIX acc:<http://www.semanticdesktop.org/ontologies/2011/10/05/dao/v1.0/>"+
-			    		
-			              
-			                "DELETE { ?a foaf:title \"Mr1\" } " +
-			                "INSERT { ?a foaf:title \"Mr\" } " +
-			                "WHERE { ?a foaf:title \"Mr1\" } ";
+				+ "PREFIX acc:<http://www.semanticdesktop.org/ontologies/2011/10/05/dao/v1.0/>" + "INSERT Data {<"
+				+ Constants.inputFileName + "#" + person.getUserId() + "> rdf:type  foaf:Person; foaf:givenname '"
+				+ person.getGivenName() + "';" + "foaf:family_name '" + person.getFamilyName() + "';" + "foaf:mbox '"
+				+ person.getUserMail() + "';" + "acc:userId '" + person.getUserName() + "';" + "acc:password '"
+				+ person.getUserPassword() + "' ;" + "  foaf:name '" + person.getName() + "'; "
+				+ "cv:hasDriversLicense '" + person.getDriverLicense() + "' ;" + "  cv:maritalStatus '"
+				+ person.getMarried() + "' ;" + "cv:targetSalary '" + person.getSalary() + "' ;" + "  foaf:age '"
+				+ person.getAge() + "' ;" + friends  +"cv:phone '" + person.getPhone() + "' ;"
+				+ "  cv:EducationalOrg '" + (person.getStudied().get(0).getOrganizationId()) + "' ;"
+				+ "foaf:schoolHomepage '" + (person.getStudied().get(0).getHomepage()) + "' ;" + "  cv:skillName '"
+				+ (person.getKnowledge().get(0).getSkillName()) + "' ;" + "cv:skillYearsExperience '"
+				+ (person.getKnowledge().get(0).getExperience()) + "' ;" + "  cv:jobType '"
+				+ (person.getWorked().get(0).getJob().getJobName()) + "' ;" + "cv:startDate '"
+				+ (person.getWorked().get(0).getBeginDate()) + "' ;" + "  cv:endDate '"
+				+ (person.getWorked().get(0).getEndDate()) + "'; " + "foaf:Organization '"
+				+ (person.getWorked().get(0).getOrganizationId()) + "' ;" + "  cv:careerLevel '"
+				+ (person.getWorked().get(0).getJob().getJobCareerLevel()) + "' ;" + "foaf:workplaceHomepage '"
+				+ (person.getWorked().get(0).getHomepage()) + "'. } ";
 
-		     //   UpdateAction.parseExecute( rename, model );
-
-		       // model.write( System.out, "TTL" );	
-		return null;
+		UpdateAction.parseExecute(insert, model);
+		// RDFWriter w = model.getWriter("RDF/XML-ABBREV");
+		model.write(out);// TO-DO ai grija sa dai path-ul correct
+		return Constants.Succes;
 	}
 
 	public String updateOrganization(Organization organization) {
