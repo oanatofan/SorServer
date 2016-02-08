@@ -3,10 +3,8 @@
  */
 package com.Sor.Search;
 
-
 import java.io.IOException;
 import java.text.ParseException;
-
 
 import com.Sor.Model.*;
 import com.Sor.Utils.Constants;
@@ -60,20 +58,21 @@ public class UserHelpper {
 			String userPassword, String userType) throws IOException {
 		maxId = maxId + 1;
 		int id = maxId;
-		helper.insertUser(userName, givenName, familyName, userMail, userPassword,id);
+		helper.insertUser(userName, givenName, familyName, userMail, userPassword, id);
 		String mId = helper.getId(userName, userPassword);
 		RegisterResponse response = new RegisterResponse();
-		if (mId == null) {		
-		response.setUserId(id);
-		response.setUserType(userType);
-		response.setLogedin(true);}
+		System.out.println("get id " + userName + " " + userPassword + " " + mId);
+		if (mId != null) {
+			response.setUserId(id);
+			response.setUserType(userType);
+			response.setLogedin(true);
+		}
 		return response;
 	}
 
 	public String addFriend(String userId, String friendId) throws IOException {
 		// TODO Auto-generated method stub
-		return helper.addFriend(userId,friendId);
+		return helper.addFriend(userId, friendId);
 	}
-
 
 }

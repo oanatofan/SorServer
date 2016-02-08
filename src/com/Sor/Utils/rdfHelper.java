@@ -97,7 +97,9 @@ public class rdfHelper {
 		while (results.hasNext()) {
 			QuerySolution binding = results.nextSolution();
 			Resource subj = (Resource) binding.get("person");
+			System.out.println(subj);
 			persID = subj.getURI();
+			System.out.println(persID);
 			if (persID != null && persID.contains(Constants.inputFileName)) {
 				i++;
 				persID = persID.substring((persID.indexOf("#") + 1));
@@ -346,9 +348,9 @@ public class rdfHelper {
 	}
 
 	public String updatePerson(Person person) throws IOException {
+		//DELEte
 		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
-		InputStream in = FileManager.get().open(Constants.inputFileName);
-		FileWriter out = new FileWriter(Constants.OutPutField);
+		InputStream in = FileManager.get().open(Constants.inputFileName);	
 		if (in == null) {
 			throwException();
 		}
@@ -366,8 +368,20 @@ public class rdfHelper {
 				+ "DELETE {?s ?p ?o} where {  ?s ?p ?o Filter (?s= <http://localhost:8080/SorServer/persons.rdf#"
 				+ person.getUserId() + "> ) }";
 		UpdateAction.parseExecute(delete, model);
+		in.close();
+		FileWriter out = new FileWriter(Constants.OutPutField);
+		System.out.println("test writer"+out.toString());
 		// RDFWriter w = model.getWriter("RDF/XML-ABBREV");
 		model.write(out);// TO-DO ai grija sa dai path-ul correct
+		model.close();		
+		out.close();
+		
+		//insert
+		model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
+		in = FileManager.get().open(Constants.inputFileName);	
+		if (in == null) {
+			throwException();
+		}
 		model.read(Constants.inputFileName, "");
 		String friends = "";
 		for (Person f : person.getFriends()) {
@@ -400,8 +414,13 @@ public class rdfHelper {
 
 		UpdateAction.parseExecute(insert, model);
 		// RDFWriter w = model.getWriter("RDF/XML-ABBREV");
-		model.write(out);
-		out.close();// TO-DO ai grija sa dai path-ul correct
+		in.close();
+		out = new FileWriter(Constants.OutPutField);
+		System.out.println("test writer"+out.toString());
+		// RDFWriter w = model.getWriter("RDF/XML-ABBREV");
+		model.write(out);// TO-DO ai grija sa dai path-ul correct
+		model.close();		
+		out.close();
 		return Constants.Succes;
 	}
 
@@ -425,11 +444,10 @@ public class rdfHelper {
 			int id) throws IOException {
 		File f = new File(Constants.OutPutField);
 		System.out.println("test " + f.getAbsolutePath() + " " + f.getCanonicalPath()+" "+f.getPath()); // or
-																						// File.getCanonicalPath().
+																			// File.getCanonicalPath().
 		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
 		InputStream in = FileManager.get().open(Constants.inputFileName);
-		FileWriter out = new FileWriter(Constants.OutPutField);
-		System.out.println("test writer"+out.toString());
+	
 		if (in == null) {
 			throwException();
 		}
@@ -450,8 +468,13 @@ public class rdfHelper {
 				+ familyName + "'. } ";
 
 		UpdateAction.parseExecute(insert, model);
+		in.close();
+		FileWriter out = new FileWriter(Constants.OutPutField);
+		System.out.println("test writer"+out.toString());
 		// RDFWriter w = model.getWriter("RDF/XML-ABBREV");
 		model.write(out);// TO-DO ai grija sa dai path-ul correct
+		model.close();
+		
 		out.close();
 	}
 
@@ -517,7 +540,6 @@ public class rdfHelper {
 	public String addFriend(String userId, String friendId) throws IOException {
 		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
 		InputStream in = FileManager.get().open(Constants.inputFileName);
-		FileWriter out = new FileWriter(Constants.OutPutField);
 		if (in == null) {
 			throwException();
 		}
@@ -539,8 +561,12 @@ public class rdfHelper {
 				+ Constants.inputFileName + "#" + userId + "> rdf:type  foaf:Person;" + friends + ". } ";
 
 		UpdateAction.parseExecute(insert, model);
+		in.close();
+		FileWriter out = new FileWriter(Constants.OutPutField);
+		System.out.println("test writer"+out.toString());
 		// RDFWriter w = model.getWriter("RDF/XML-ABBREV");
 		model.write(out);// TO-DO ai grija sa dai path-ul correct
+		model.close();		
 		out.close();
 		return Constants.Succes;
 	}
