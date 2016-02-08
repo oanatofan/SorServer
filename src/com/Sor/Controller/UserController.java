@@ -9,11 +9,10 @@ import javax.ws.rs.core.*;
 import com.Sor.Model.*;
 import com.Sor.Search.UserHelpper;
 import com.Sor.Utils.Constants;
-import com.Sor.Utils.DatabaseCalls;
 
 @Path("/user")
 public class UserController {
-	DatabaseCalls dc=new DatabaseCalls();
+	
 	UserHelpper  user=new UserHelpper();
 	// http://localhost:8080/SorServer/rest/user/login?userName=Examples&userPassword=09709
 	@GET
@@ -28,7 +27,7 @@ public class UserController {
 		response=user.verifyLogin(userName,userPassword);		
 		return response;
 	}
-
+///http://sorserver.eu-gb.mybluemix.net/rest/user/register?userName=test&userMail=mail@yahoo.com&userPassword=09709&userType=person
 	// http://localhost:8080/SorServer/rest/user/register?userName=test&userMail=mail@yahoo.com&userPassword=09709&userType=person
 	@GET
 	@Path("/register")
@@ -39,8 +38,8 @@ public class UserController {
 			@QueryParam("userType") String userType, @Context SecurityContext securityContext)
 					throws NotFoundException, IOException {
 	//Response r=Response.
-		URI tes = UriBuilder.fromUri("http://localhost:8080/SorServer/persons.rdf").build();
-		System.out.println(tes+" "+tes.getPath()+" "+tes.getRawPath()+ " "+System.getenv("OPENSHIFT_DATA_DIR"));
+		URI tes = UriBuilder.fromUri(Constants.inputFileName).build();
+		System.out.println("pathuri "+tes+" "+tes.getPath()+" "+tes.getRawPath()+ " "+System.getenv("OPENSHIFT_DATA_DIR"));
 		// return
 		// delegate.userRegisterPost(userName,userMail,userPassword,userType,securityContext);
 		RegisterResponse response = new RegisterResponse();

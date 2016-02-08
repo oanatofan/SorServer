@@ -1,15 +1,15 @@
 package com.Sor.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import com.Sor.Model.*;
-import com.Sor.Utils.DatabaseCalls;
 
 @Path("/messages")
 public class MessageController {
 	
-	DatabaseCalls dc=new DatabaseCalls();
+	
 	
 	//http://localhost:8080/SorServer/rest/messages/get?userId=1&messageId=1
 	@GET
@@ -18,7 +18,7 @@ public class MessageController {
 	public Message getMessage(@QueryParam("userId") String userId, @QueryParam("messageId") String messageId,
 			@Context SecurityContext securityContext) throws NotFoundException {
 		// return delegate.messagesGetGet(userId,messageId,securityContext);
-		 Message response = dc.getMessage(userId, messageId);		
+		 Message response =new Message(); //dc.getMessage(userId, messageId);		
 		return response;
 	}
 	//http://localhost:8080/SorServer/rest/messages/getAll?userId=1
@@ -28,7 +28,7 @@ public class MessageController {
 	public List<Message> getAllMessage(@QueryParam("userId") String userId, @Context SecurityContext securityContext)
 			throws NotFoundException {
 		// return delegate.messagesGetGet(userId,messageId,securityContext);
-		 List<Message> response = dc.getMessages(userId);		
+		 List<Message> response =new ArrayList<Message>(); //dc.getMessages(userId);		
 			return response;
 		
 	}
@@ -39,6 +39,6 @@ public class MessageController {
 	public String messagesSendPost(@QueryParam("userId") String userId, @QueryParam("userDestName") String userDestName,
 			@QueryParam("message") String message, @Context SecurityContext securityContext) throws NotFoundException {
 		//dc.sendMessage(userId,userDestName,message);
-		return dc.sendMessage(userId,userDestName,message);
+		return "fail"; //dc.sendMessage(userId,userDestName,message);
 	}
 }

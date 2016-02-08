@@ -3,6 +3,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 @Path("/hello")
 public class Hello {
+	//http://sorserver.eu-gb.mybluemix.net/rest/hello
 //	http://localhost:8080/SorServer/rest/hello
 	 // This method is called if TEXT_PLAIN is request
 	  @GET

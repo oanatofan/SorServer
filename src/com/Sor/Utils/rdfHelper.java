@@ -228,10 +228,14 @@ public class rdfHelper {
 
 			}
 
-			if (s.equals("phone"))
+			if (s.equals("phone")) {
 				o = object.toString();
-			if (s.equals("mail"))
+				o = o.substring(o.indexOf('/' + 1));
+			}
+			if (s.equals("mbox")) {
 				o = object.toString();
+				o = o.substring(o.indexOf('/' + 1));
+			}
 			SetPersonValue(person, s, o);
 			if (s.equals("EducationalOrg"))
 				stud.setOrganizationId(o);
@@ -396,7 +400,8 @@ public class rdfHelper {
 
 		UpdateAction.parseExecute(insert, model);
 		// RDFWriter w = model.getWriter("RDF/XML-ABBREV");
-		model.write(out);// TO-DO ai grija sa dai path-ul correct
+		model.write(out);
+		out.close();// TO-DO ai grija sa dai path-ul correct
 		return Constants.Succes;
 	}
 
@@ -418,12 +423,13 @@ public class rdfHelper {
 
 	public void insertUser(String userName, String givenName, String familyName, String userMail, String userPassword,
 			int id) throws IOException {
-		File f=new File("/SorServer/persons.rdf");
-		System.out.println(f.getAbsolutePath()+" "+f.getCanonicalPath()); //or File.getCanonicalPath().
+		File f = new File(Constants.OutPutField);
+		System.out.println("test " + f.getAbsolutePath() + " " + f.getCanonicalPath()+" "+f.getPath()); // or
+																						// File.getCanonicalPath().
 		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
 		InputStream in = FileManager.get().open(Constants.inputFileName);
 		FileWriter out = new FileWriter(Constants.OutPutField);
-		
+		System.out.println("test writer"+out.toString());
 		if (in == null) {
 			throwException();
 		}
@@ -446,6 +452,7 @@ public class rdfHelper {
 		UpdateAction.parseExecute(insert, model);
 		// RDFWriter w = model.getWriter("RDF/XML-ABBREV");
 		model.write(out);// TO-DO ai grija sa dai path-ul correct
+		out.close();
 	}
 
 	private void throwException() {
@@ -519,23 +526,22 @@ public class rdfHelper {
 		// RDFWriter w = model.getWriter("RDF/XML-ABBREV");
 		model.read(Constants.inputFileName, "");
 
-	
 		String friends = "";
-	
-			friends = friends + " foaf:knows <" + Constants.inputFileName + "#" + friendId + "> ";
 
-		
+		friends = friends + " foaf:knows <" + Constants.inputFileName + "#" + friendId + "> ";
+
 		String insert = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
 				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  "
 				+ "PREFIX foaf:<http://xmlns.com/foaf/0.1/>"
 				+ "PREFIX cv:<http://captsolo.net/semweb/resume/0.2/cv.rdf/>"
 				+ "PREFIX cvb:<http://captsolo.net/semweb/resume/0.2/base.rdf//>"
 				+ "PREFIX acc:<http://www.semanticdesktop.org/ontologies/2011/10/05/dao/v1.0/>" + "INSERT Data {<"
-				+ Constants.inputFileName + "#" + userId + "> rdf:type  foaf:Person;"+  friends + ". } ";
+				+ Constants.inputFileName + "#" + userId + "> rdf:type  foaf:Person;" + friends + ". } ";
 
 		UpdateAction.parseExecute(insert, model);
 		// RDFWriter w = model.getWriter("RDF/XML-ABBREV");
 		model.write(out);// TO-DO ai grija sa dai path-ul correct
+		out.close();
 		return Constants.Succes;
 	}
 
