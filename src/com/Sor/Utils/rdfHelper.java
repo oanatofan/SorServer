@@ -230,6 +230,8 @@ public class rdfHelper {
 
 			if (s.equals("phone"))
 				o = object.toString();
+			if (s.equals("mail"))
+				o = object.toString();
 			SetPersonValue(person, s, o);
 			if (s.equals("EducationalOrg"))
 				stud.setOrganizationId(o);
