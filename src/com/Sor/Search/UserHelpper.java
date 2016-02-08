@@ -70,5 +70,10 @@ public class UserHelpper {
 		return response;
 	}
 
+	public String addFriend(String userId, String friendId) throws IOException {
+		// TODO Auto-generated method stub
+		return helper.addFriend(userId,friendId);
+	}
+
 
 }

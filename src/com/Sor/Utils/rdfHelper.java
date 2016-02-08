@@ -258,6 +258,7 @@ public class rdfHelper {
 		studied.add(stud);
 		work.setJob(job);
 		worked.add(work);
+		person.setWorked(worked);
 		person.setStudied(studied);
 		person.setKnowledge(skills);
 		person.setFriends(getfriends(userId));
@@ -341,7 +342,7 @@ public class rdfHelper {
 	public String updatePerson(Person person) throws IOException {
 		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
 		InputStream in = FileManager.get().open(Constants.inputFileName);
-		FileWriter out = new FileWriter("persons.rdf");
+		FileWriter out = new FileWriter(Constants.OutPutField);
 		if (in == null) {
 			throwException();
 		}
@@ -415,9 +416,12 @@ public class rdfHelper {
 
 	public void insertUser(String userName, String givenName, String familyName, String userMail, String userPassword,
 			int id) throws IOException {
+		File f=new File("/SorServer/persons.rdf");
+		System.out.println(f.getAbsolutePath()+" "+f.getCanonicalPath()); //or File.getCanonicalPath().
 		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
 		InputStream in = FileManager.get().open(Constants.inputFileName);
-		FileWriter out = new FileWriter("persons.rdf");
+		FileWriter out = new FileWriter(Constants.OutPutField);
+		
 		if (in == null) {
 			throwException();
 		}
@@ -499,6 +503,38 @@ public class rdfHelper {
 			}
 		}
 		return nodes;
+	}
+
+	public String addFriend(String userId, String friendId) throws IOException {
+		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
+		InputStream in = FileManager.get().open(Constants.inputFileName);
+		FileWriter out = new FileWriter(Constants.OutPutField);
+		if (in == null) {
+			throwException();
+		}
+
+		// FileWriter out = new FileWriter( inputFileName );
+		// RDFWriter w = model.getWriter("RDF/XML-ABBREV");
+		model.read(Constants.inputFileName, "");
+
+	
+		String friends = "";
+	
+			friends = friends + " foaf:knows '" + Constants.inputFileName + "#" + friendId + "' ";
+
+		
+		String insert = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  "
+				+ "PREFIX foaf:<http://xmlns.com/foaf/0.1/>"
+				+ "PREFIX cv:<http://captsolo.net/semweb/resume/0.2/cv.rdf/>"
+				+ "PREFIX cvb:<http://captsolo.net/semweb/resume/0.2/base.rdf//>"
+				+ "PREFIX acc:<http://www.semanticdesktop.org/ontologies/2011/10/05/dao/v1.0/>" + "INSERT Data {<"
+				+ Constants.inputFileName + "#" + userId + "> rdf:type  foaf:Person;"+  friends + ". } ";
+
+		UpdateAction.parseExecute(insert, model);
+		// RDFWriter w = model.getWriter("RDF/XML-ABBREV");
+		model.write(out);// TO-DO ai grija sa dai path-ul correct
+		return Constants.Succes;
 	}
 
 }

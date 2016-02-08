@@ -1,12 +1,14 @@
 package com.Sor.Controller;
 
 import java.io.IOException;
+import java.net.URI;
 import java.text.ParseException;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import com.Sor.Model.*;
 import com.Sor.Search.UserHelpper;
+import com.Sor.Utils.Constants;
 import com.Sor.Utils.DatabaseCalls;
 
 @Path("/user")
@@ -27,8 +29,8 @@ public class UserController {
 		return response;
 	}
 
-	// http://localhost:8080/SorServer/rest/user/login?userName=Examples&userMail=mail@yahoo.com&userPassword=09709&userType=person
-	@POST
+	// http://localhost:8080/SorServer/rest/user/register?userName=test&userMail=mail@yahoo.com&userPassword=09709&userType=person
+	@GET
 	@Path("/register")
 	@Produces(MediaType.APPLICATION_JSON)
 	public RegisterResponse postUserRegister(@QueryParam("userName") String userName,@QueryParam("givenName") String givenName,
@@ -36,10 +38,27 @@ public class UserController {
 			@QueryParam("userMail") String userMail, @QueryParam("userPassword") String userPassword,
 			@QueryParam("userType") String userType, @Context SecurityContext securityContext)
 					throws NotFoundException, IOException {
+	//Response r=Response.
+		URI tes = UriBuilder.fromUri("http://localhost:8080/SorServer/persons.rdf").build();
+		System.out.println(tes+" "+tes.getPath()+" "+tes.getRawPath()+ " "+System.getenv("OPENSHIFT_DATA_DIR"));
 		// return
 		// delegate.userRegisterPost(userName,userMail,userPassword,userType,securityContext);
 		RegisterResponse response = new RegisterResponse();
 		response=user.registerUser(userName,givenName,familyName,userMail,userPassword,userType);	
+		System.out.println(response);
+		return response;
+	}
+	 //asta merge doar la get altfel faci calul altfel http://localhost:8080/SorServer/rest/user/addFriend?userId=1&friendId=6
+	@PUT
+	@Path("/addFriend")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String addFriend(@QueryParam("userId") String userId,
+			@QueryParam("friendId") String friendId, @Context SecurityContext securityContext)
+					throws NotFoundException, IOException {
+		// return
+		// viewPerson.getUserLogin(userName,userPassword,securityContext);
+		String response =null;
+		response=user.addFriend(userId,friendId);		
 		return response;
 	}
 
