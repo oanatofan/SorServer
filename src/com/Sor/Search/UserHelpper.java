@@ -55,7 +55,7 @@ public class UserHelpper {
 	}
 
 	public RegisterResponse registerUser(String userName, String givenName, String familyName, String userMail,
-			String userPassword, String userType) throws IOException {
+			String userPassword) throws IOException {
 		maxId = maxId + 1;
 		int id = maxId;
 		helper.insertUser(userName, givenName, familyName, userMail, userPassword, id);
@@ -64,7 +64,7 @@ public class UserHelpper {
 		System.out.println("get id " + userName + " " + userPassword + " " + mId);
 		if (mId != null) {
 			response.setUserId(id);
-			response.setUserType(userType);
+			response.setUserType(Constants.Person);
 			response.setLogedin(true);
 		}
 		return response;

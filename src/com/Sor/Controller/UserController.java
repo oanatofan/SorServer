@@ -35,7 +35,7 @@ public class UserController {
 	public RegisterResponse postUserRegister(@QueryParam("userName") String userName,@QueryParam("givenName") String givenName,
 			@QueryParam("familyName") String familyName,
 			@QueryParam("userMail") String userMail, @QueryParam("userPassword") String userPassword,
-			@QueryParam("userType") String userType, @Context SecurityContext securityContext)
+			 @Context SecurityContext securityContext)
 					throws NotFoundException, IOException {
 	//Response r=Response.
 		URI tes = UriBuilder.fromUri(Constants.inputFileName).build();
@@ -43,7 +43,7 @@ public class UserController {
 		// return
 		// delegate.userRegisterPost(userName,userMail,userPassword,userType,securityContext);
 		RegisterResponse response = new RegisterResponse();
-		response=user.registerUser(userName,givenName,familyName,userMail,userPassword,userType);	
+		response=user.registerUser(userName,givenName,familyName,userMail,userPassword);	
 		System.out.println(response);
 		return response;
 	}

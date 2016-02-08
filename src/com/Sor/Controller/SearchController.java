@@ -61,7 +61,7 @@ public class SearchController {
 	@GET
 	@Path("/suggestPersons")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Person> getSuggestPerson(@QueryParam("userId") String userId, @QueryParam("type") String type,
+	public List<Person> getSuggestPerson(@QueryParam("userId") String userId,
 			@Context SecurityContext securityContext) throws NotFoundException, ParseException {
 		//Person per = new Person();
 		List<Person> response = new ArrayList<Person>();
