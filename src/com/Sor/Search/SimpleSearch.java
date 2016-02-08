@@ -29,6 +29,26 @@ public class SimpleSearch {
 		ArrayList<Node> curentFriends = new ArrayList<Node>();
 		ArrayList<Node> tmpSugestedFriends = new ArrayList<Node>();
 		Node node;
+		/*
+		 * int[][] dist = new int[n][n]; for (int i = 0; i < n; i++) for (int j
+		 * = i; j < n; j++) { dist[i][j] = 0;
+		 * 
+		 * } for (int i = 0; i < n; i++) for (int j = i; j < n; j++) { if (i !=
+		 * j) { Node nodei = nodes.get(i); Node nodej = nodes.get(j); if
+		 * (nodei.getValue().equals(nodej.getURI())) dist[i][j] = dist[i][j]
+		 * +10;// deja prieteni
+		 * 
+		 * if (nodei.getValue().equals(nodej.getValue())) dist[i][j] =
+		 * dist[i][j] + 1; }
+		 * 
+		 * } int cnK = 0; for (int i = 0; i < n; i++) { node = nodes.get(i);
+		 * String subj = node.getURI(); if (subj.endsWith("#" + userId)) {
+		 * currentPers = node; cnK = i; break; } } for (int i = 0; i < n; i++) {
+		 * nodes.get(i).setPrioritar(dist[cnK][i]); }
+		 *
+		 * 
+		 * n = nodes.size(); Collections.reverse(nodes);
+		 */
 		for (int i = 0; i < n; i++) {
 			node = nodes.get(i);
 			String subj = node.getURI();
@@ -72,17 +92,31 @@ public class SimpleSearch {
 		for (Node nod : tmpSugestedFriends) {
 			if (!listSugestedFriends.contains(nod)) {
 				listSugestedFriends.add(nod);
+			} else {
+				int index = listSugestedFriends.indexOf(nod);
+				int prioritar = listSugestedFriends.get(index).getPrioritar();
+				listSugestedFriends.get(index).setPrioritar(prioritar + 1);
 			}
 		}
+		Collections.reverse(listSugestedFriends);
 		n = listSugestedFriends.size();
+		int contor = 0;
 		System.out.println(n);
 		List<Person> response = new ArrayList<Person>();
 		for (int i = 0; i < n; i++) {
+
 			node = listSugestedFriends.get(i);
 			String subj = node.getURI();
 			String persID = subj.substring((subj.indexOf("#") + 1));
+			System.out.println("persid " + persID);
+			// if (node.getPrioritar() > 0) {
+			contor++;
+
 			Person user = helpper.getPerson(persID);
 			response.add(user);
+			// }
+			if (contor == 4)
+				break;
 		}
 		return response;
 	}

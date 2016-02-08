@@ -1,19 +1,20 @@
 package com.Sor.Utils;
 
-import java.util.ArrayList;
+import java.util.*;
+import java.lang.*;
 
-public class Node {
+public class Node implements Comparable<Node> {
 	private String URI;
 	private String Property;
 	private String Value;
-	private Boolean prioritar;
+	private int prioritar;
 	public ArrayList<Node> neighberhours;
 
 	public Node(String Uri, String property, String value) {
 		setURI(Uri);
 		setProperty(property);
 		setValue(value);
-		setPrioritar(false);
+		setPrioritar(0);
 		neighberhours = new ArrayList<Node>();
 	}
 
@@ -56,11 +57,17 @@ public class Node {
 		Value = value;
 	}
 
-	public Boolean getPrioritar() {
+	public int getPrioritar() {
 		return prioritar;
 	}
 
-	public void setPrioritar(Boolean prioritar) {
-		this.prioritar = prioritar;
+	public void setPrioritar(int i) {
+		this.prioritar = i;
+	}
+
+	@Override
+	public int compareTo(Node other) {
+			
+		return Integer.compare(prioritar, other.getPrioritar());
 	}
 }
