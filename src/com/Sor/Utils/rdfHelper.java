@@ -230,13 +230,13 @@ public class rdfHelper {
 
 			}
 
-			if (s.equals("phone")) {
+			if (s.equals("phone") && object.toString().contains("/")) {
 				o = object.toString();
-				o = o.substring(o.indexOf('/' + 1));
+				o = o.substring(o.lastIndexOf('/') + 1);
 			}
-			if (s.equals("mbox")) {
+			if (s.equals("mbox")&& object.toString().contains("/")) {
 				o = object.toString();
-				o = o.substring(o.indexOf('/' + 1));
+				o = o.substring(o.lastIndexOf('/') + 1);
 			}
 			SetPersonValue(person, s, o);
 			if (s.equals("EducationalOrg"))
