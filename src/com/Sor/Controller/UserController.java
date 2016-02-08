@@ -29,7 +29,7 @@ public class UserController {
 	}
 ///http://sorserver.eu-gb.mybluemix.net/rest/user/register?userName=test&userMail=mail@yahoo.com&userPassword=09709&userType=person
 	// http://localhost:8080/SorServer/rest/user/register?userName=test&userMail=mail@yahoo.com&userPassword=09709&userType=person
-	@GET
+	@POST
 	@Path("/register")
 	@Produces(MediaType.APPLICATION_JSON)
 	public RegisterResponse postUserRegister(@QueryParam("userName") String userName,@QueryParam("givenName") String givenName,
@@ -48,7 +48,7 @@ public class UserController {
 		return response;
 	}
 	 //asta merge doar la get altfel faci calul altfel http://localhost:8080/SorServer/rest/user/addFriend?userId=1&friendId=6
-	@PUT
+	@POST
 	@Path("/addFriend")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String addFriend(@QueryParam("userId") String userId,
@@ -64,7 +64,7 @@ public class UserController {
 	// uita-te
 	// http://examples.javacodegeeks.com/enterprise-java/rest/jersey/json-example-with-jersey-jackson/
 	//https://www.nabisoft.com/tutorials/java-ee/producing-and-consuming-json-or-xml-in-java-rest-services-with-jersey-and-jackson
-	@PUT
+	@POST
 	@Path("/editPerson")
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
