@@ -365,7 +365,7 @@ public class rdfHelper {
 		model.read(Constants.inputFileName, "");
 		String friends = "";
 		for (Person f : person.getFriends()) {
-			friends = friends + " foaf:knows '" + Constants.inputFileName + "#" + f.getUserId() + "'; ";
+			friends = friends + " foaf:knows <" + Constants.inputFileName + "#" + f.getUserId() + ">; ";
 
 		}
 		String insert = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
@@ -520,7 +520,7 @@ public class rdfHelper {
 	
 		String friends = "";
 	
-			friends = friends + " foaf:knows '" + Constants.inputFileName + "#" + friendId + "' ";
+			friends = friends + " foaf:knows <" + Constants.inputFileName + "#" + friendId + "> ";
 
 		
 		String insert = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
