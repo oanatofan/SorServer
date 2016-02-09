@@ -64,6 +64,7 @@ public class rdfHelper {
 		}
 
 		qe.close();
+		model.close();
 		return maxId;
 	}
 
@@ -107,6 +108,7 @@ public class rdfHelper {
 		}
 
 		qe.close();
+		model.close();
 		if (i > 1) {
 			throw new IllegalArgumentException("User: " + userName + " has duplicate");
 		}
@@ -135,6 +137,7 @@ public class rdfHelper {
 
 		// write it to standard out
 		model.write(System.out);
+		model.close();
 	}
 
 	public List<Person> getfriends(String userid) {
@@ -178,6 +181,7 @@ public class rdfHelper {
 			}
 		}
 		qe.close();
+		model.close();
 		return result;
 	}
 
@@ -271,6 +275,7 @@ public class rdfHelper {
 		person.setKnowledge(skills);
 		person.setFriends(getfriends(userId));
 		qe.close();
+		model.close();
 		// System.out.println(person.toString());
 		return person;
 	}
@@ -358,7 +363,7 @@ public class rdfHelper {
 		// FileWriter out = new FileWriter( inputFileName );
 		// RDFWriter w = model.getWriter("RDF/XML-ABBREV");
 		model.read(Constants.inputFileName, "");
-
+        List<Person> friends=getfriends(person.getUserId());
 		String delete = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
 				+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>  "
 				+ "PREFIX foaf:<http://xmlns.com/foaf/0.1/>"
@@ -383,9 +388,9 @@ public class rdfHelper {
 			throwException();
 		}
 		model.read(Constants.inputFileName, "");
-		String friends = "";
-		for (Person f : person.getFriends()) {
-			friends = friends + " foaf:knows <" + Constants.inputFileName + "#" + f.getUserId() + ">; ";
+		String friendsString = "";
+		for (Person f : friends) {
+			friendsString = friendsString + " foaf:knows <" + Constants.inputFileName + "#" + f.getUserId() + ">; ";
 
 		}
 		String insert = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
@@ -400,7 +405,7 @@ public class rdfHelper {
 				+ person.getUserPassword() + "' ;" + "  foaf:name '" + person.getName() + "'; "
 				+ "cv:hasDriversLicense '" + person.getDriverLicense() + "' ;" + "  cv:maritalStatus '"
 				+ person.getMarried() + "' ;" + "cv:targetSalary '" + person.getSalary() + "' ;" + "  foaf:age '"
-				+ person.getAge() + "' ;" + friends + "cv:phone '" + person.getPhone() + "' ;" + "  cv:EducationalOrg '"
+				+ person.getAge() + "' ;" + friendsString + "cv:phone '" + person.getPhone() + "' ;" + "  cv:EducationalOrg '"
 				+ (person.getStudied().get(0).getOrganizationId()) + "' ;" + "foaf:schoolHomepage '"
 				+ (person.getStudied().get(0).getHomepage()) + "' ;" + "  cv:skillName '"
 				+ (person.getKnowledge().get(0).getSkillName()) + "' ;" + "cv:skillYearsExperience '"
@@ -502,6 +507,7 @@ public class rdfHelper {
 					stmt.getObject().toString()));
 
 		}
+		model.close();
 		return nodes;
 
 	}
