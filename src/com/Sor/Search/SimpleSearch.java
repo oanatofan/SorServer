@@ -66,7 +66,7 @@ public class SimpleSearch {
 			String subj = node.getURI();
 			if (prop.contains("knows")) {
 				curentFriends.add(node);
-		    if (!subj.endsWith("#" + userId)) {
+				if (!subj.endsWith("#" + userId)) {
 					tmpSugestedFriends.add(node);
 				}
 			}
@@ -91,29 +91,31 @@ public class SimpleSearch {
 		}
 		n = tmpSugestedFriends.size();
 		int nf = curentFriends.size();
-		for(int i=0;i<n;i++)
-			for(int j=0;j<nf;j++)
-			{
-				node=tmpSugestedFriends.get(i);
-				nodej=curentFriends.get(j);
-				if(!node.getURI().equals(nodej.getURI())){
-					intSugestedFriends.add(node);
+		for (int i = 0; i < n; i++) {
+			node = tmpSugestedFriends.get(i);
+			for (int j = 0; j < nf; j++) {
+				nodej = curentFriends.get(j);
+				if (node.getURI().equals(nodej.getURI())) {
+					break;
 				}
 			}
+			intSugestedFriends.add(node);
+		}
 		List<Node> listSugestedFriends = new ArrayList<Node>();
 		for (Node nod : intSugestedFriends) {
-			if (!listSugestedFriends.contains(nod)&&(nod.getURI()!=currentPers.getURI())) {
+			if (!listSugestedFriends.contains(nod) && (nod.getURI() != currentPers.getURI())) {
 				listSugestedFriends.add(nod);
 			} else {
 				int index = listSugestedFriends.indexOf(nod);
-				if(index>=0){
-				int prioritar = listSugestedFriends.get(index).getPrioritar();
-				listSugestedFriends.get(index).setPrioritar(prioritar + 1);}
+				if (index >= 0) {
+					int prioritar = listSugestedFriends.get(index).getPrioritar();
+					listSugestedFriends.get(index).setPrioritar(prioritar + 1);
+				}
 			}
 		}
 		Collections.reverse(listSugestedFriends);
 		n = listSugestedFriends.size();
-	    int contor = 0;
+		int contor = 0;
 		System.out.println(n);
 		List<Person> response = new ArrayList<Person>();
 		for (int i = 0; i < n; i++) {
