@@ -102,7 +102,7 @@ public class SimpleSearch {
 			}
 		List<Node> listSugestedFriends = new ArrayList<Node>();
 		for (Node nod : intSugestedFriends) {
-			if (!listSugestedFriends.contains(nod)) {
+			if (!listSugestedFriends.contains(nod)&&(nod.getURI()!=currentPers.getURI())) {
 				listSugestedFriends.add(nod);
 			} else {
 				int index = listSugestedFriends.indexOf(nod);
