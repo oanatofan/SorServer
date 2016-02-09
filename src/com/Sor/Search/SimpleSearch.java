@@ -28,6 +28,7 @@ public class SimpleSearch {
 		Node currentPers = null;
 		ArrayList<Node> curentFriends = new ArrayList<Node>();
 		ArrayList<Node> tmpSugestedFriends = new ArrayList<Node>();
+		ArrayList<Node> intSugestedFriends = new ArrayList<Node>();
 		Node node;
 		/*
 		 * int[][] dist = new int[n][n]; for (int i = 0; i < n; i++) for (int j
@@ -65,17 +66,18 @@ public class SimpleSearch {
 			String subj = node.getURI();
 			if (prop.contains("knows")) {
 				curentFriends.add(node);
-				if (!subj.endsWith("#" + userId)) {
+		    if (!subj.endsWith("#" + userId)) {
 					tmpSugestedFriends.add(node);
 				}
 			}
 		}
 		n = curentFriends.size();
+		Node nodej;
 		for (int i = 0; i < n; i++) {
 			node = curentFriends.get(i);
 			int k = node.neighberhours.size();
 			for (int j = 0; j < k; j++) {
-				Node nodej = node.neighberhours.get(j);
+				nodej = node.neighberhours.get(j);
 				String prop = nodej.getProperty();
 				String subj = nodej.getURI();
 				if (prop.contains("knows")) {
@@ -88,8 +90,18 @@ public class SimpleSearch {
 			}
 		}
 		n = tmpSugestedFriends.size();
+		int nf = curentFriends.size();
+		for(int i=0;i<n;i++)
+			for(int j=0;j<nf;j++)
+			{
+				node=tmpSugestedFriends.get(i);
+				nodej=curentFriends.get(j);
+				if(!node.getURI().equals(nodej.getURI())){
+					intSugestedFriends.add(node);
+				}
+			}
 		List<Node> listSugestedFriends = new ArrayList<Node>();
-		for (Node nod : tmpSugestedFriends) {
+		for (Node nod : intSugestedFriends) {
 			if (!listSugestedFriends.contains(nod)) {
 				listSugestedFriends.add(nod);
 			} else {
@@ -100,7 +112,7 @@ public class SimpleSearch {
 		}
 		Collections.reverse(listSugestedFriends);
 		n = listSugestedFriends.size();
-		int contor = 0;
+	    int contor = 0;
 		System.out.println(n);
 		List<Person> response = new ArrayList<Person>();
 		for (int i = 0; i < n; i++) {
