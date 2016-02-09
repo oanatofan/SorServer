@@ -27,7 +27,7 @@
 <cv:noOfChildren>0</cv:noOfChildren>
 <cv:maritalStatus>Single</cv:maritalStatus>
 <cv:hasNationality>romanian</cv:hasNationality>
-<cv:hasDriversLicense rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</cv:hasDriversLicense>
+<cv:hasDriversLicense>no</cv:hasDriversLicense>
 <cv:hasCitizenship>Romania</cv:hasCitizenship>
 <cv:gender>Male</cv:gender>
 <cv:birthPlace>Romania</cv:birthPlace>
@@ -84,7 +84,7 @@
 <cv:noOfChildren>1</cv:noOfChildren>
 <cv:maritalStatus>Married</cv:maritalStatus>
 <cv:hasNationality>romanian</cv:hasNationality>
-<cv:hasDriversLicense rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cv:hasDriversLicense>
+<cv:hasDriversLicense>yes</cv:hasDriversLicense>
 <cv:hasCitizenship>Romania</cv:hasCitizenship>
 <cv:gender>Male</cv:gender>
 <cv:birthPlace>Iasi</cv:birthPlace>
@@ -142,7 +142,7 @@
 <cv:noOfChildren>0</cv:noOfChildren>
 <cv:maritalStatus>Single</cv:maritalStatus>
 <cv:hasNationality>romanian</cv:hasNationality>
-<cv:hasDriversLicense rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cv:hasDriversLicense>
+<cv:hasDriversLicense>yes</cv:hasDriversLicense>
 <cv:hasCitizenship>Romania</cv:hasCitizenship>
 <cv:gender>Female</cv:gender>
 <cv:birthPlace>Bucuresti</cv:birthPlace>
@@ -198,7 +198,7 @@
 <cv:noOfChildren>2</cv:noOfChildren>
 <cv:maritalStatus>Married</cv:maritalStatus>
 <cv:hasNationality>romanian</cv:hasNationality>
-<cv:hasDriversLicense rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cv:hasDriversLicense>
+<cv:hasDriversLicense>yes</cv:hasDriversLicense>
 <cv:hasCitizenship>Romania</cv:hasCitizenship>
 <cv:gender>Male</cv:gender>
 <cv:birthPlace>Cluj</cv:birthPlace>
@@ -253,7 +253,7 @@
 <cv:noOfChildren>3</cv:noOfChildren>
 <cv:maritalStatus>Married</cv:maritalStatus>
 <cv:hasNationality>romanian</cv:hasNationality>
-<cv:hasDriversLicense rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cv:hasDriversLicense>
+<cv:hasDriversLicense>yes</cv:hasDriversLicense>
 <cv:hasCitizenship>Romania</cv:hasCitizenship>
 <cv:gender>Male</cv:gender>
 <cv:birthPlace>Iasi</cv:birthPlace>
@@ -309,7 +309,7 @@
 <cv:noOfChildren>1</cv:noOfChildren>
 <cv:maritalStatus>Married</cv:maritalStatus>
 <cv:hasNationality>romanian</cv:hasNationality>
-<cv:hasDriversLicense rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cv:hasDriversLicense>
+<cv:hasDriversLicense>yes</cv:hasDriversLicense>
 <cv:hasCitizenship>Romania</cv:hasCitizenship>
 <cv:gender>Female</cv:gender>
 <cv:birthPlace>Iasi</cv:birthPlace>
