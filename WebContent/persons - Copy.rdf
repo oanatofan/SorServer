@@ -13,9 +13,9 @@
 <foaf:family_name>Vasiliu</foaf:family_name>
 
 <foaf:age>25</foaf:age>
-<foaf:mbox rdf:resource="mailto:ionutz@yahoo.com"/>
+<foaf:mbox rdf:resource="ionutz@yahoo.com"/>
 <foaf:homepage rdf:resource="www.ionutz.com"/>
-<foaf:phone rdf:resource="tel:0722333444"/>
+<foaf:phone rdf:resource="0722333444"/>
 
 <foaf:Organization rdf:resource="Endava"/>
 <foaf:workplaceHomepage rdf:resource="www.endava.ro"/>
@@ -23,12 +23,7 @@
 <foaf:schoolHomepage rdf:resource="www.fii.ro"/>
 <foaf:topic_interest rdf:resource="java"/>
 
-<foaf:knows>
-<foaf:Person>
-<foaf:name>George Dinu</foaf:name>
-</foaf:Person>
-</foaf:knows>
-
+<foaf:knows rdf:resource="#2"/>
 <cv:noOfChildren>0</cv:noOfChildren>
 <cv:maritalStatus>Single</cv:maritalStatus>
 <cv:hasNationality>romanian</cv:hasNationality>
@@ -58,7 +53,7 @@
 <cv:targetSalary>5000</cv:targetSalary>
 <cv:targetSalaryCurrency>lei</cv:targetSalaryCurrency>
 
-<acc:userId>test</acc:userId>
+<acc:userId>test1</acc:userId>
 <acc:password>test</acc:password>
 
 
@@ -73,9 +68,9 @@
 <foaf:family_name>Dinu</foaf:family_name>
 
 <foaf:age>32</foaf:age>
-<foaf:mbox rdf:resource="mailto:gd@yahoo.com"/>
+<foaf:mbox rdf:resource="gd@yahoo.com"/>
 <foaf:homepage rdf:resource="www.dinu.com"/>
-<foaf:phone rdf:resource="tel:0722111222"/>
+<foaf:phone rdf:resource="0722111222"/>
 
 <foaf:Organization rdf:resource="Capgemini"/>
 <foaf:workplaceHomepage rdf:resource="www.capgemini.ro"/>
@@ -83,11 +78,8 @@
 <foaf:schoolHomepage rdf:resource="www.uaic.ro"/>
 <foaf:topic_interest rdf:resource="windows"/>
 
-<foaf:knows>
-<foaf:Person>
-<foaf:name>Ana Popa</foaf:name>
-</foaf:Person>
-</foaf:knows>
+<foaf:knows rdf:resource="#3"/>
+
 
 <cv:noOfChildren>1</cv:noOfChildren>
 <cv:maritalStatus>Married</cv:maritalStatus>
@@ -118,7 +110,7 @@
 <cv:targetSalary>7000</cv:targetSalary>
 <cv:targetSalaryCurrency>lei</cv:targetSalaryCurrency>
 
-<acc:userId>test</acc:userId>
+<acc:userId>test2</acc:userId>
 <acc:password>test</acc:password>
 
 </foaf:Person>
@@ -133,9 +125,9 @@
 <foaf:family_name>Popa</foaf:family_name>
 
 <foaf:age>21</foaf:age>
-<foaf:mbox rdf:resource="mailto:ap@yahoo.com"/>
+<foaf:mbox rdf:resource="ap@yahoo.com"/>
 <foaf:homepage rdf:resource="www.anapopa.com"/>
-<foaf:phone rdf:resource="tel:0722212121"/>
+<foaf:phone rdf:resource="0722212121"/>
 
 <foaf:Organization rdf:resource="MobileApps"/>
 <foaf:workplaceHomepage rdf:resource="www.mobileapps.ro"/>
@@ -143,11 +135,8 @@
 <foaf:schoolHomepage rdf:resource="www.fii.ro"/>
 <foaf:topic_interest rdf:resource="testing"/>
 
-<foaf:knows>
-<foaf:Person>
-<foaf:name>Alexandru Radu</foaf:name>
-</foaf:Person>
-</foaf:knows>
+<foaf:knows rdf:resource="#4"/>
+
 
 
 <cv:noOfChildren>0</cv:noOfChildren>
@@ -179,7 +168,7 @@
 <cv:targetSalary>3500</cv:targetSalary>
 <cv:targetSalaryCurrency>lei</cv:targetSalaryCurrency>
 
-<acc:userId>test</acc:userId>
+<acc:userId>test3</acc:userId>
 <acc:password>test</acc:password>
 
 </foaf:Person>
@@ -193,9 +182,9 @@
 <foaf:family_name>Rad</foaf:family_name>
 
 <foaf:age>45</foaf:age>
-<foaf:mbox rdf:resource="mailto:ar@yahoo.com"/>
+<foaf:mbox rdf:resource="ar@yahoo.com"/>
 <foaf:homepage rdf:resource="www.ar.com"/>
-<foaf:phone rdf:resource="tel:0745444555"/>
+<foaf:phone rdf:resource="0745444555"/>
 
 <foaf:Organization rdf:resource="Cloud"/>
 <foaf:workplaceHomepage rdf:resource="www.cloud.ro"/>
@@ -203,17 +192,8 @@
 <foaf:schoolHomepage rdf:resource="www.ghasachi.ro"/>
 <foaf:topic_interest rdf:resource="admin"/>
 
-<foaf:knows>
-<foaf:Person>
-<foaf:name>Andrei Moisa</foaf:name>
-</foaf:Person>
-</foaf:knows>
-
-<foaf:knows>
-<foaf:Person>
-<foaf:name>Ioana Marin</foaf:name>
-</foaf:Person>
-</foaf:knows>
+<foaf:knows rdf:resource="#5"/>
+<foaf:knows rdf:resource="#6"/>
 
 <cv:noOfChildren>2</cv:noOfChildren>
 <cv:maritalStatus>Married</cv:maritalStatus>
@@ -244,7 +224,7 @@
 <cv:targetSalary>10000</cv:targetSalary>
 <cv:targetSalaryCurrency>lei</cv:targetSalaryCurrency>
 
-<acc:userId>test</acc:userId>
+<acc:userId>test4</acc:userId>
 <acc:password>test</acc:password>
 
 </foaf:Person>
@@ -258,9 +238,9 @@
 <foaf:family_name>Moisa</foaf:family_name>
 
 <foaf:age>50</foaf:age>
-<foaf:mbox rdf:resource="mailto:am@yahoo.com"/>
+<foaf:mbox rdf:resource="am@yahoo.com"/>
 <foaf:homepage rdf:resource="www.am.com"/>
-<foaf:phone rdf:resource="tel:0745222555"/>
+<foaf:phone rdf:resource="0745222555"/>
 
 <foaf:Organization rdf:resource="Accent"/>
 <foaf:workplaceHomepage rdf:resource="www.accent.ro"/>
@@ -299,7 +279,7 @@
 <cv:targetSalary>15000</cv:targetSalary>
 <cv:targetSalaryCurrency>lei</cv:targetSalaryCurrency>
 
-<acc:userId>test</acc:userId>
+<acc:userId>test5</acc:userId>
 <acc:password>test</acc:password>
 
 </foaf:Person>
@@ -313,9 +293,9 @@
 <foaf:family_name>Marin</foaf:family_name>
 
 <foaf:age>24</foaf:age>
-<foaf:mbox rdf:resource="mailto:im@yahoo.com"/>
+<foaf:mbox rdf:resource="im@yahoo.com"/>
 <foaf:homepage rdf:resource="www.im.com"/>
-<foaf:phone rdf:resource="tel:0745343455"/>
+<foaf:phone rdf:resource="0745343455"/>
 
 <foaf:Organization rdf:resource="Web Development"/>
 <foaf:workplaceHomepage rdf:resource="www.webdevelopment.ro"/>
@@ -324,11 +304,7 @@
 <foaf:topic_interest rdf:resource="JavaScript"/>
 
 
-<foaf:knows>
-<foaf:Person>
-<foaf:name>Ionut Vasiliu</foaf:name>
-</foaf:Person>
-</foaf:knows>
+<foaf:knows rdf:resource="#1"/>
 
 <cv:noOfChildren>1</cv:noOfChildren>
 <cv:maritalStatus>Married</cv:maritalStatus>
@@ -359,7 +335,7 @@
 <cv:targetSalary>3000</cv:targetSalary>
 <cv:targetSalaryCurrency>lei</cv:targetSalaryCurrency>
 
-<acc:userId>test</acc:userId>
+<acc:userId>test6</acc:userId>
 <acc:password>test</acc:password>
 
 </foaf:Person>
