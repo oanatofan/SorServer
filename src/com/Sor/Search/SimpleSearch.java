@@ -106,8 +106,9 @@ public class SimpleSearch {
 				listSugestedFriends.add(nod);
 			} else {
 				int index = listSugestedFriends.indexOf(nod);
+				if(index>=0){
 				int prioritar = listSugestedFriends.get(index).getPrioritar();
-				listSugestedFriends.get(index).setPrioritar(prioritar + 1);
+				listSugestedFriends.get(index).setPrioritar(prioritar + 1);}
 			}
 		}
 		Collections.reverse(listSugestedFriends);
